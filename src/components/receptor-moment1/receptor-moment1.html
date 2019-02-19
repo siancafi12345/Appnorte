@@ -1,0 +1,317 @@
+<!-- Generated template for the ReceptorMoment1Component component -->
+<div #container class="emisorMoment1">
+ 
+  <ion-list>
+    <ion-item>
+      <ion-label class="titulo">
+        Características del viaje al departamento de {{mainNameApp}}
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Esta información servirá para construir nuestras estadísticas turismo y compararnos con otras regiones nacionales y del mundo, además será
+        base para el diseño de planes de desarrollo para el sector.
+      </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            Fecha elaboración de la encuesta:
+        </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="calendar" item-start></ion-icon>
+      <ion-input name="dateStart" [(ngModel)]="momento1.dateStart" type="text" placeholder="Fecha elaboración de la encuenta" disabled class="no_border"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Encuestador:
+      </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-input type="text" placeholder="Nombre" disabled class="no_border" name="A0" [(ngModel)]="momento1.A0"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label style="font-size: 18px;">
+        HOJA DE REGISTRO
+      </ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label class="titulo" stacked> Lugar donde se realiza la encuesta</ion-label>
+        <ion-select [(ngModel)]="momento1.placesurvey_id" class="requiredSelect">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="9273">Terminal de transporte - Cúcuta</ion-option>
+          <ion-option value="9274">Aeropuerto Camilo Daza</ion-option>
+          <ion-option value="9275">Terminal Berlinas Redoma</ion-option>
+          <ion-option value="9276">Terminal de los Patios</ion-option>
+          <ion-option value="9277">Migración La Parada</ion-option>
+          <ion-option value="9278">Hoteles Cúcuta</ion-option>
+          <ion-option value="9279">Parque Central Chinácota - Ramón González Valencia</ion-option>
+          <ion-option value="9280">Parque Santamaría Vía Iscalá</ion-option>
+          <ion-option value="9281">Hoteles Chinácota</ion-option>
+          <ion-option value="9282">El Diamante - Chinácota</ion-option>
+          <ion-option value="9283">Terminal de Transportes Pamplona</ion-option>
+          <ion-option value="9284">Parque Agueda Gallardo - Pamplona</ion-option>
+          <ion-option value="9285">Centros Religiosos Pamplona</ion-option>
+          <ion-option value="9286">Hoteles Pamplona</ion-option>
+          <ion-option value="9287">Terminal de Transportes - OCaña</ion-option>
+          <ion-option value="9288">Santuario Virgen de Torcoroma</ion-option>
+          <ion-option value="9289">Parque Principal 29 de Mayo - Ocaña</ion-option>
+          <ion-option value="9290">Hoteles Ocaña</ion-option>
+          <ion-option value="9291">Parque la Playa de Belén - Los Estoraques</ion-option>
+          <ion-option value="9292">Complejo Turístico San Francisco - Ocaña</ion-option>
+          <ion-option value="9293">Cristo Rey - Ocaña</ion-option>
+          <ion-option value="9294">Zona Histórica Casa General Santander - Villa del Rosario</ion-option>
+          <ion-option value="9295">veintitres</ion-option>
+          <ion-option value="9296">veinticuatro</ion-option>
+          <ion-option value="9297">veinticinco</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Personas que viven en {{mainNameApp}}?</ion-label>
+      <ion-input value="0" (ionBlur)="sumTotal()" [(ngModel)]="momento1.ps1" type="number" placeholder=""  ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Personas que no viven en {{mainNameApp}} con edad menor o igual a 15 años ?</ion-label>
+      <ion-input value="0" (ionBlur)="sumTotal()" [(ngModel)]="momento1.ps2" type="number" placeholder=""  ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Personas que no viven en {{mainNameApp}} mayores de 15 años</ion-label>
+      <ion-input value="0" (ionBlur)="sumTotal()" [(ngModel)]="momento1.ps3" type="number" placeholder=""  ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Personas que no viven en Norte de Santander adicionales con edad menor o igual a 15 años</ion-label>
+      <ion-input value="0" (ionBlur)="sumTotal()" [(ngModel)]="momento1.ps4" type="number" placeholder=""  ></ion-input>
+    </ion-item>
+    <ion-item>
+      
+      <ion-label class="titulo" stacked>Personas que no viven en Norte de Santander adicionales mayores de 15 años</ion-label>
+      <ion-input value="0" (ionBlur)="sumTotal()" [(ngModel)]="momento1.ps5" type="number" placeholder=""  ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Total personas: <strong>{{momento1.sumTotal}}</strong></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+          Si observa que el grupo es de niños y/o jóvenes (menores o igual a 18 años) marque Si de lo contrario marque No.
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Excursión de niños y/o jóvenes</ion-label>
+      <ion-select name="children_exclusion" [(ngModel)]="momento1.children_exclusion" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="0">No excursión de niños y/o jóvenes</ion-option>
+        <ion-option value="1">Si excursión de niños y/o jóvenes</ion-option>
+      </ion-select>
+    </ion-item>
+    <div text-center>
+      <button *ngIf="continuar1" (click)="paso2()"  ion-button color="primary">Continuar</button>
+
+    </div> 
+    <!-- FINALIZA -->
+    <div *ngIf="continuar">
+      <ion-item>
+        <ion-label style="font-size: 18px; text-align: center;">
+          Encuesta Finalizada
+        </ion-label>
+        
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 16px; text-align: center; color:red;">
+          Por favor guarde su encuesta
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 12px; text-align: center;">
+          Gracias por su participación, los resultados de esta investigación serán compartidos en el portal Situr Norte de Santander que actualmente se encuentra en construcción.
+          Somos Situr Norte de Santander
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Observaciones:</ion-label>
+        <ion-input  type="text" placeholder="" name="observations" [(ngModel)]="momento1.observations" ></ion-input>
+      </ion-item>
+    </div>
+    <!-- PARTE DATOS -->
+    <!--  -->
+    <div *ngIf="flagShowMomento1">
+      <ion-item>
+        <ion-label class="titulo" style="font-size:18px;">
+          PARTE A. CARACTERÍSTICAS DEL VISITANTE
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label style="font-size: 12px; ">
+          Encuestador si hay personas que no viven en Norte de Santander mayores de 15 años, pregunte: De las ___ personas que no viven en Norte de Santander mayores de 15 años, quien está por cumplir años? Usted ha sido seleccionado para participar en el estudio. De lo contrario, si hay 0 personas, finalizar encuesta en la hoja de registro y agradezca por la atención.
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Nombres:</ion-label>
+        <ion-input type="text" placeholder="" name="names" required="true" [(ngModel)]="momento1.names" class="requiredInput"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Apellidos:</ion-label>
+        <ion-input type="text" placeholder="" name="surnames" required="true" [(ngModel)]="momento1.surnames" class="requiredInput"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Correo electrónico</ion-label>
+        <ion-input type="email" id="correo" (keyup)="correo()" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" placeholder="" name="email" [(ngModel)]="momento1.email" class="requiredInput"></ion-input>      
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Teléfono:</ion-label>
+        <ion-input type="number" id="telefono" (keyup)="telefono(7)" placeholder="" name="phone_number" required="true" [(ngModel)]="momento1.phone_number" class="requiredInput"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="this.momento1.tel">
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido</ion-label>
+      </ion-item> 
+      <ion-item>
+        <ion-label class="titulo" stacked>Celular:</ion-label>
+        <ion-input type="number" id="celular" placeholder=""  (keyup)="celular(10)" name="cell_phone" required="true" [(ngModel)]="momento1.cell_phone" class="requiredInput"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="this.momento1.cel">
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido</ion-label>
+      </ion-item>      
+      <ion-item>
+        <ion-label class="titulo" stacked>Fecha de llegada a {{mainNameApp}}:</ion-label>
+        <ion-datetime (ionChange)="validateMomento2()" displayFormat="DD/MM/YYYY" [(ngModel)]="momento1.arrivaldate" name="arrivaldate" class="requiredSelect"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Fecha de salida de {{mainNameApp}}:</ion-label>
+        <ion-datetime (ionChange)="validateMomento2()" displayFormat="DD/MM/YYYY" [(ngModel)]="momento1.departuredate" name="departuredate" class="requiredSelect"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>¿Cuál es su país de residencia?</ion-label>
+        <ion-select placeholder="Seleccionar" name="country_id" [(ngModel)]="momento1.country_id" (ionChange)="onChangeCountry($event)" class="requiredSelect">
+          <ion-label>Seleccionar</ion-label>
+          <ion-option *ngFor="let country of data.countries" value="{{country.id | orderBy:id:reverse  }}">{{country.name}}
+          </ion-option>
+      </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>¿Cuál es su departamento/estado/provincia de residencia?</ion-label>
+        <ion-select placeholder="Seleccionar" name="realdepartment_id" [(ngModel)]="momento1.realdepartment_id" (ionChange)="onChangeDept($event)" class="requiredSelect">
+          <ion-label>Seleccionar</ion-label>
+          <ion-option *ngFor="let dept of depts" value="{{dept.id}}">{{dept.name}}</ion-option>
+        </ion-select>
+      </ion-item> 
+             
+      <ion-item *ngIf="ciudadn">
+        <ion-label class="titulo" stacked>¿Cuál es su Ciudad/Municipio de residencia?</ion-label>
+        <ion-select placeholder="Seleccionar" name="city_id" [(ngModel)]="momento1.city_id"   class="requiredSelect">                            
+          <ion-option *ngFor="let city of cities" value="{{city.id}}">{{city.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="ciudad">
+        <ion-label class="titulo" stacked>Cidad</ion-label>
+        <ion-input type="text" placeholder="" name="city_other" [(ngModel)]="momento1.city_other" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="ciudad">
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">¡Información:! Este departamento o estado no dispone de ciudades o municipios.</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="titulo" stacked>Motivo por el que viene a Norte de Santander</ion-label>
+        <ion-select  name="motivo" [(ngModel)]="momento1.motivo" class="requiredSelect" (ionChange)="motivos($event)">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="0" >Personal</ion-option>
+          <ion-option value="1" >Profesional</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item *ngIf="personal">
+        <ion-label class="titulo" stacked> ¿Cuál fue el motivo personal para venir a Norte de Santander?</ion-label>
+        <ion-select [(ngModel)]="momento1.trip_motives" (ionChange)="showtrip_motives($event)" name="trip_motives" placeholder="MOTIVOS" multiple="false" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="82">Vacaciones, recreo y ocio</ion-option>
+        <ion-option value="83">Visitar a familiares y/o amigos</ion-option>
+        <ion-option value="84">En tránsito a otro destino</ion-option>
+        <ion-option value="85">Educación/Formación</ion-option>
+        <ion-option value="86">Salud y atención médica (incluye la cirugía estética)</ion-option>
+        <ion-option value="87">Asistir a eventos religiosos/peregrinaciones</ion-option>
+        <ion-option value="88">Compras para uso personal o para regalo</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="profecional">
+      <ion-label class="titulo" stacked> ¿Cuál fue el motivo profesional para venir a Norte de Santander?</ion-label>
+      <ion-select [(ngModel)]="momento1.trip_motives" (ionChange)="showtrip_motives($event)" name="trip_motives" placeholder="MOTIVOS" multiple="false" class="requiredSelect">
+      <ion-label> Seleccione </ion-label>
+      <ion-option value="89">Realizar inversión y/o asistir a reunión de negocios</ion-option>
+      <ion-option value="90">Asistir a conferencia, congreso, feria comercial o exposición</ion-option>
+      <ion-option value="91"> Dictar conferencia, ponente en congreso, feria comercial o exposición</ion-option>
+      <ion-option value="92">Artista de espectáculo (concierto, obra de teatro, danza, etc.)</ion-option>
+      <ion-option value="93">Competir en actividad deportiva</ion-option>
+      <ion-option value="94">Investigación académica o científica</ion-option>
+      <ion-option value="95">Comprar bienes o servicios para empresa que no es de {{mainNameApp}} o como independiente</ion-option>
+      <ion-option value="96">Vender bienes o prestar servicios como representante de empresa que no es de {{mainNameApp}} o como independiente</ion-option>
+      <ion-option value="97">Vine a ser empleado(a) de una empresa ubicada en Norte de Santander</ion-option>
+      <ion-option value="793">Realizar funciones propias de personal de embajada, consulado y militares en el departamento.</ion-option>
+      <ion-option value="9269">Vivir en Norte de Santander.</ion-option>
+      <ion-option value="40">Otros</ion-option>
+    </ion-select>
+  </ion-item>
+
+    <ion-item *ngIf="flagtimestop">
+      <ion-label class="titulo" stacked>¿Cuántas horas durará/duró la parada más larga en {{mainNameApp}}?</ion-label>
+      <ion-input (ionBlur)="validateMomento2()" type="text" placeholder="" name="timestop" [(ngModel)]="momento1.timestop" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="flaghealth_id">
+      <ion-label class="titulo" stacked>La finalidad del servicio medico es:</ion-label>
+      <ion-select [(ngModel)]="momento1.health_id" name="health_id" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="101">Tratamiento médico con intervención quirúrgica</ion-option>
+        <ion-option value="100">Tratamiento médico sin intervención quirúrgica</ion-option>
+        <ion-option value="99">Chequeo médico o exámenes de rutina</ion-option>
+        <ion-option value="98">Sólo opinión (asesoría) médica</ion-option>
+        <ion-option value="40">Otro</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="flagothermotives">
+      <ion-label class="titulo" stacked>¿Cuál?</ion-label>
+      <ion-input class="requiredInput" type="text" placeholder="" name="othermotives" [(ngModel)]="momento1.othermotives"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿En dónde nació?</ion-label>
+      <ion-select [(ngModel)]="momento1.whereborn_id" name="whereborn_id" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="226">{{mainNameApp}}</ion-option>
+        <ion-option value="227">En otro departamento de Colombia</ion-option>
+        <ion-option value="225">Extranjero</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Género</ion-label>
+      <ion-select [(ngModel)]="momento1.gender_id" name="gender_id" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="12">Femenino</ion-option>
+        <ion-option value="11">Masculino</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Edad</ion-label>
+      <ion-input (ionBlur)="validateMomento2()" (ionChange)="edad()" type="number" placeholder="AÑOS" name="age" min="15" required="true" [(ngModel)]="momento1.age" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="edadb">
+      <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">La edad no es valida</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Con que frecuencia realiza este viaje?</ion-label>
+      <ion-select (ionChange)="validatefrequency_id()"  [(ngModel)]="momento1.frequency_id" name="" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="103">Varias veces a la semana</ion-option>
+        <ion-option value="104">Una vez a la semana </ion-option>
+        <ion-option value="105">Menor o igual a un mes (No incluye varias veces a la semana y una vez a la semana)</ion-option>
+        <ion-option value="106">Mayor a un mes</ion-option>
+        <ion-option value="107">Esta es la primera vez </ion-option>
+      </ion-select>
+    </ion-item>
+    
+    </div>
+  </ion-list>
+
+  <div text-center>
+    <button *ngIf="guardar" (click)="save()" ion-button color="primary">Guardar</button>
+    <button *ngIf="flagMomento2" (click)="next()" ion-button color="primary">Siguiente</button>
+    <!-- <button  (click)="next()" ion-button color="primary">Siguiente</button> -->
+  </div>
+</div>

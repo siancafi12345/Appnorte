@@ -1,0 +1,37 @@
+export class ReceptorMomento1Model {
+    public placesurvey_id:string='';
+    public ps1:string='';
+    public ps2:string='';
+    public ps3:string='';
+    public ps4:string='';
+    public ps5:string='';
+    public children_exclusion:string;
+    public motivo:string;
+    public observations:string='';
+    public names:string='';
+    public surnames:string='';
+    public email:string='';
+    public phone_number:string='';
+    public cell_phone:string='';
+    public arrivaldate:string='';
+    public departuredate:string='';
+    public country_id:string='';
+    public realdepartment_id:string='';
+    public city_id:string='';
+    public trip_motives:string[]=[];
+    public timestop:string='';
+    public health_id:string='';
+    public othermotives:string='';
+    public whereborn_id:string='';
+    public gender_id:string='';
+    public age:string='';     
+    public frequency_id:string='';    
+    public A0:string='';
+    public sumTotal:number;
+    public city_other:string='';
+    public dateTime:string='';
+    public  cel: boolean = false;
+    public  tel: boolean = false;
+    public dateStart: string;
+    public diferencia:string ="";
+}

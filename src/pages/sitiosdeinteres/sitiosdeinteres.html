@@ -1,0 +1,298 @@
+<!--
+   Generated template for the SitiosdeinteresPage page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar>
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Agencias operadoras</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content padding>
+   <form [formGroup]="sitios" (ngSubmit)="logForm()">
+      
+      <ion-item>
+         <ion-note item-start>
+                Los datos que se solicitan no serán revelados con nombre propio, sólo se publican resúmenes numéricos que no permiten deducir datos de carácter individual. En ningún caso tiene fines fiscales.
+         </ion-note>
+      </ion-item>
+      <ion-item>
+            <ion-label>
+                Fecha elaboración de la encuesta:
+            </ion-label>
+        </ion-item>
+          <ion-item>
+          <ion-icon name="calendar" item-start></ion-icon>
+          <ion-input formControlName="datesurvey_start"  type="text" placeholder="Fecha elaboración de la encuenta" disabled class="no_border"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            Encuestador:
+          </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="person" item-start></ion-icon>
+            <ion-input formControlName="interviewer_id" type="text" placeholder="Nombre" disabled class="no_border"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="titulo"> PARTE A. DATOS DEL ESTABLECIMIENTO </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Nombre del establecimiento: </ion-label>
+            <ion-input formControlName="name" class="requiredSelect"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="titulo"> Año de fundación </ion-label>
+            <ion-datetime formControlName="ano_fundacion"  displayFormat="YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="titulo"> Municipio </ion-label>
+            <ion-select formControlName="municipality_id" placeholder="Seleccionar" class="requiredSelect">
+                <ion-option value="781">ÁBREGO</ion-option>
+                <ion-option value="782">ARBOLEDAS</ion-option>
+                <ion-option value="783">BOCHALEMA</ion-option>
+                <ion-option value="784">BUCARASICA</ion-option>
+                <ion-option value="786">CÁCHIRA</ion-option>
+                <ion-option value="785">CÁCOTA</ion-option>
+                <ion-option value="787">CHINÁCOTA</ion-option>
+                <ion-option value="788">CHITAGÁ</ion-option>
+                <ion-option value="789">CONVENCIÓN</ion-option>
+                <ion-option value="780">CÚCUTA</ion-option>
+                <ion-option value="790">CUCUTILLA</ion-option>
+                <ion-option value="791">DURANIA</ion-option>
+                <ion-option value="792">EL CARMEN</ion-option>
+                <ion-option value="793">EL TARRA</ion-option>
+                <ion-option value="794">EL ZULIA</ion-option>
+                <ion-option value="795">GRAMALOTE</ion-option>
+                <ion-option value="796">HACARÍ</ion-option>
+                <ion-option value="797">HERRÁN</ion-option>
+                <ion-option value="799">LA ESPERANZA</ion-option>
+                <ion-option value="800">LA PLAYA</ion-option>
+                <ion-option value="798">LABATECA</ion-option>
+                <ion-option value="801">LOS PATIOS</ion-option>
+                <ion-option value="802">LOURDES</ion-option>
+                <ion-option value="803">MUTISCUA</ion-option>
+                <ion-option value="804">OCAÑA</ion-option>
+                <ion-option value="805">PAMPLONA</ion-option>
+                <ion-option value="806">PAMPLONITA</ion-option>
+                <ion-option value="807">PUERTO SANTANDER</ion-option>
+                <ion-option value="808">RAGONVALIA</ion-option>
+                <ion-option value="809">SALAZAR</ion-option>
+                <ion-option value="810">SAN CALIXTO</ion-option>
+                <ion-option value="811">SAN CAYETANO</ion-option>
+                <ion-option value="812">SANTIAGO</ion-option>
+                <ion-option value="813">SARDINATA</ion-option>
+                <ion-option value="814">SILOS</ion-option>
+                <ion-option value="815">TEORAMA</ion-option>
+                <ion-option value="816">TIBÚ</ion-option>
+                <ion-option value="817">TOLEDO</ion-option>
+                <ion-option value="818">VILLA CARO</ion-option>
+                <ion-option value="819">VILLA DEL ROSARIO</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Dirección </ion-label>
+            <ion-input formControlName="address"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Nombre del contacto </ion-label>
+            <ion-input formControlName="contact"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="titulo"> Cargo</ion-label>
+            <ion-select formControlName="position_id"  placeholder="Seleccionar" class="requiredSelect">
+                <ion-option value="9253">Abogado</ion-option>
+                <ion-option value="3413">Agente de viajes</ion-option>
+                <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>
+                <ion-option value="9221">Aseador</ion-option>
+                <ion-option value="3431">Asistente de servicios administrativos </ion-option>
+                <ion-option value="3475">Atletas, deportistas y afines</ion-option>
+                <ion-option value="4123">Auxiliar administrativo </ion-option>
+                <ion-option value="4121">Auxiliar de contabilidad </ion-option>
+                <ion-option value="4211">Cajero</ion-option>
+                <ion-option value="5125">Camarera(o)</ion-option>
+                <ion-option value="5124">Capitán de meseros-Hostess</ion-option>
+                <ion-option value="5123">Chef</ion-option>
+                <ion-option value="5121">Cocinero</ion-option>
+                <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>
+                <ion-option value="2411">Contador</ion-option>
+                <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>
+                <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>
+                <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>
+                <ion-option value="1315">Director de operación</ion-option>
+                <ion-option value="1322">Director de talento humano </ion-option>
+                <ion-option value="1323">Director de ventas y/o comercialización</ion-option>
+                <ion-option value="1321">Director financiero y/o administrativo</ion-option>
+                <ion-option value="1211">Director o Gerente general</ion-option>
+                <ion-option value="1212">Director regional, sucursal, oficina</ion-option>
+                <ion-option value="9254">Diseñador y Publicista</ion-option>
+                <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>
+                <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>
+                <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>
+                <ion-option value="5113">Guía</ion-option>
+                <ion-option value="9222">Lavanderos y planchadores</ion-option>
+                <ion-option value="9255">Medicos y afines</ion-option>
+                <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>
+                <ion-option value="5122">Mesero-Barman </ion-option>
+                <ion-option value="9132">Porteros, conserjes y afines</ion-option>
+                <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>
+                <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>
+                <ion-option value="9256">Revisor Fiscal</ion-option>
+                <ion-option value="4113">Secretaria(o)</ion-option>
+                <ion-option value="1426">Supervisor de operaciones</ion-option>
+                <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>
+                <ion-option value="3122">Técnico en programación informática</ion-option>
+                <ion-option value="9133">Vigilantes y celadores</ion-option>
+                <ion-option value="40">Otro</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="sitios.value.position_id == '40'">
+            <ion-label floating>Que Cargo </ion-label>
+            <ion-input formControlName="other_position" ></ion-input>
+        </ion-item> 
+        <ion-item >
+            <ion-label class="titulo" stacked>Telefono</ion-label>
+            <ion-input formControlName="phone_number" class="requiredInput" type="number"  placeholder="" (keyup)="telefono(7)"></ion-input>
+        </ion-item>
+        <ion-label *ngIf="telefonovalida"  class="titulo1">&nbsp;&nbsp;&nbsp; El numero debe contener 7 caracteres</ion-label>
+        <ion-item >
+            <ion-label class="titulo" stacked>Ext.</ion-label>
+            <ion-input  formControlName="phone_ext"  class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+        </ion-item>
+       <ion-item >
+            <ion-label class="titulo" stacked>Celular</ion-label>
+            <ion-input formControlName="cell_phone" class="requiredInput" type="number" max="5" placeholder="" (keyup)="celular(10)"></ion-input>
+        </ion-item>
+        <ion-label *ngIf="telefonovalida1"  class="titulo1">&nbsp;&nbsp;&nbsp; El numero debe contener 10 caracteres</ion-label>
+        <ion-item >
+            <ion-label class="titulo" stacked>E-mail</ion-label>
+            <ion-input formControlName="email" class="requiredInput" type="email"  placeholder="" ngModel email="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label class="titulo"> PARTE B. ACTIVIDAD COMERCIAL </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-note item-start>
+                Las preguntas que a continuación le voy a formular están relacionadas con la actividad comercial y la capacidad de servicio durante el mes anterior.
+            </ion-note>
+         </ion-item>
+         <ion-item >
+            <ion-label class="titulo" stacked>¿Cuántos planes turísticos* ofrece la empresa?</ion-label>
+            <ion-input formControlName="touristPlans" class="requiredInput" type="number" max="5" placeholder="" ></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-note item-start>
+                Encuestador lea el significado de *Plan turístico: Plan adquirido por un viajero o grupo de viajeros que incluye un conjunto de servicios, tales como: pasajes aéreos, terrestres, alimentación, alojamiento, city tours, transporte local, etc. En ningún caso los paquetes turísticos incluyen solo pasajes o un servicio.
+            </ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="titulo"> ¿Cuáles actividades deportivas ofrece la empresa?</ion-label>
+            <ion-select formControlName="sport_activities"  placeholder="Seleccionar" multiple="true" class="requiredSelect" (ionChange)="actividades()">
+                <ion-option value="191">Bungee Jumping</ion-option>
+                <ion-option value="190">Escalada en roca</ion-option>
+                <ion-option value="186">Espelelismo (Exploración recreativa de cuevas)</ion-option>
+                <ion-option value="188">Parapente</ion-option>
+                <ion-option value="185">Rafting (Canotaje)</ion-option>
+                <ion-option value="187">Rappel en cascadas</ion-option>
+                <ion-option value="189">Senderismo (Caminatas)</ion-option>
+                <ion-option value="40">Otro</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item *ngIf="actividad">
+            <ion-label floating>Que Cargo </ion-label>
+            <ion-input formControlName="other_sport_activities" ></ion-input>
+        </ion-item> 
+        <ion-item >
+            <ion-label class="titulo" stacked>Fuera de las actividades deportivas, ¿Qué otras actividades recreativas y culturales ofrece la empresa?</ion-label>
+            <ion-input formControlName="various_activities" class="requiredInput"  placeholder="" ></ion-input>
+        </ion-item>
+
+        <ion-list radio-group formControlName="comercial_activity" (ionChange)="comercial()">
+            <ion-item>
+                <ion-label>
+                    En el mes anterior el establecimiento estuvo en actividad comercial?
+                </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Si</ion-label>
+                <ion-radio  value="1"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>No</ion-label>
+                <ion-radio  value="0"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <div *ngIf="comercial1">
+            <ion-item >
+                <ion-label class="titulo" stacked>¿Cuántos días en el mes?</ion-label>
+                <ion-input formControlName="count_comercial_activity" class="requiredInput"  placeholder="" ></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label class="titulo" stacked>A Cuántas personas se les presto servicios turísticos* en el mes anterior.</ion-label>
+                <ion-input formControlName="count_people_services" class="requiredInput"  placeholder="" ></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label class="titulo" stacked>¿Qué porcentaje se prestó a residentes en Colombia excluyendo Norte de Santander?</ion-label>
+                <ion-input formControlName="percentage_people_national" class="requiredInput"  placeholder="" (keyup)="porcentaje()" ></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label class="titulo" stacked>¿Qué porcentaje se prestó a residentes en el extranjero?</ion-label>
+                <ion-input formControlName="percentage_people_foreign" class="requiredInput"  placeholder=""  (keyup)="porcentaje()"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label class="titulo" stacked>¿Qué porcentaje se prestó a residentes en Norte de Santander?</ion-label>
+                <ion-input formControlName="percentage_people_local" class="requiredInput"  placeholder="" (keyup)="porcentaje()"></ion-input>
+            </ion-item>
+
+            <ion-label *ngIf="porcentajes"  class="titulo1">&nbsp;&nbsp;&nbsp;La suma de los porcentajes no debe ser diferenta a 100%</ion-label>
+        </div>
+
+
+        <ion-item>
+            <ion-label class="titulo"> Nota: </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-item>
+                * Encuestador lea lo que significa servicios turísticos: Incluye los planes turísticos operados por la empresa, los servicios individuales (sin plan) para la práctica de un deporte (espelelismo, rapel, parapente, etc), u otras actividades recreativas (caminatas, cabalgatas), y güianza turística, etc.
+            </ion-item>
+            <ion-item>
+                ** Encuestador comunique que solo se incluyan solo las personas a las cuales prestaron servicios turísticos directamente, es decir, no prestados a través de terceros (otra agencia operadora)
+            </ion-item>
+        </ion-item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+      
+     
+     
+   
+
+       <ion-list>
+           <ion-item class="botones">
+               <button ion-button type="submit" [disabled]="sitios.valid">Enviar </button>
+           </ion-item>
+       </ion-list>
+   </form>
+</ion-content>

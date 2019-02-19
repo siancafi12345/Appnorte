@@ -1,0 +1,319 @@
+<ion-item>
+      
+      <!--<ion-label class="titulo" stacked>Datos administrativos</ion-label>-->
+      <!--<ion-input type="text" placeholder="NP" name="NP" [(ngModel)]="momento1.NP"></ion-input>-->
+      <ion-input type="text" placeholder="CL" name="CL" [(ngModel)]="momento1.CL" class="requiredInput"></ion-input>
+      <ion-input type="text" placeholder="CG" name="CG" [(ngModel)]="momento1.CG" class="requiredInput"></ion-input>
+      <ion-input type="text" placeholder="EN" name="EN" [(ngModel)]="momento1.EN" class="requiredInput"></ion-input>
+      <!--<ion-input type="text" placeholder="CE" name="CE" [(ngModel)]="momento1.CE"></ion-input>-->
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 1:</ion-label>
+      <ion-input name="conteo1" [(ngModel)]="momento1.conteo1" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 2:</ion-label>
+      <ion-input name="conteo2" [(ngModel)]="momento1.conteo2" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 3:</ion-label>
+      <ion-input name="conteo3" [(ngModel)]="momento1.conteo3" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 4:</ion-label>
+      <ion-input name="conteo4" [(ngModel)]="momento1.conteo4" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 5:</ion-label>
+      <ion-input name="conteo5" [(ngModel)]="momento1.conteo5" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 6:</ion-label>
+      <ion-input name="conteo6" [(ngModel)]="momento1.conteo6" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>   
+<ion-item>
+      <ion-label class="titulo" stacked>Conteo de grupos no participan 7:</ion-label>
+      <ion-input name="conteo7" [(ngModel)]="momento1.conteo7" type="number" placeholder="" class="requiredInput"></ion-input>
+</ion-item>
+ <!--<ion-item>
+      <ion-label>
+          El Ministerio de Comercio, Industria y Turismo y el Sistema de Información Turística de {{mainNameApp}}, agradece su aporte
+          al conocimiento de los viajeros que llegan al departamento.
+      </ion-label>
+    </ion-item>-->
+    <!--<ion-item>
+      <ion-label class="titulo" stacked>Fecha elaboración de la encuesta</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="momento1.A12" name="A12"></ion-datetime>
+    </ion-item>-->
+    <!-- NO ESTÁ<ion-item>
+      <ion-label class="titulo" stacked>Lugar de la encuesta</ion-label>
+      <ion-select [(ngModel)]="momento1.A13" placeholder="Seleccionar" name="A13">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="1">Aeropuerto José María Córdova</ion-option>
+        <ion-option value="2">Aeropuerto Olaya Herrera</ion-option>
+        <ion-option value="3">Terminal del Norte</ion-option>
+        <ion-option value="4">Terminal del sur</ion-option>
+        <ion-option value="5">Hotel</ion-option>
+        <ion-option value="6">Otro</ion-option>
+      </ion-select>
+    </ion-item>-->
+    <ion-item *ngIf="flagWhoIsGoingToBirth">
+            <ion-label class="titulo" stacked>De las personas que no viven en Norte de Santander mayores de 15 años. s, quien está por cumplir años?</ion-label>
+            <ion-input (ionBlur)="showMomento1()" name="whoIsGoingToBirth" [(ngModel)]="momento1.whoIsGoingToBirth" type="number" placeholder="" class="requiredInput"></ion-input>
+        </ion-item>
+        <!-- <ion-option value="147">Visita a parques temáticos/parque de atracciones</ion-option> -->
+        <!-- <ion-option value="9225">Plaza Botero</ion-option> -->
+
+        <ion-item *ngIf="flagB5_5_1">
+            <ion-label class="titulo" stacked>¿Cuáles?(Visita a parques temáticos/parque de atracciones)</ion-label>
+            <ion-select [(ngModel)]="momento2.B5_5_1" placeholder="Seleccionar" name="B5_5_1" multiple="true" class="requiredSelect">
+              <ion-label> Seleccione </ion-label>
+              <ion-option value="160">Parque Explora</ion-option>
+              <ion-option value="161">Aeroparque Juan Pablo II</ion-option>
+              <ion-option value="162">Parque temático Hacienda Nápoles</ion-option>
+              <ion-option value="163">Parque de las Aguas</ion-option>
+              <ion-option value="164">Kanaloa Parque Acuático (Santa Fe de {{mainNameApp}})</ion-option>
+              <ion-option value="165">Parque Norte</ion-option>
+              <ion-option value="166">Planetario de Medellín</ion-option>
+              <ion-option value="167">Parques recreativos Comfama (Rionegro, Parque Arví, La Estrella, Copacabana, Guatapé)</ion-option>
+              <ion-option value="168">Parques Comfenalco (Los Tamarindos, Los Encuentros, Guayabal, Gran Avenida, Piedras Blancas, Camping Los Farallones, Ecoparque Mario Aramburo)</ion-option>
+              <ion-option value="315">Ninguno de los anteriores</ion-option>
+            </ion-select>
+          </ion-item>
+
+      <ion-option value="179">Parque Natural Regional Metropolitano Cerro El Volador</ion-option>
+      <ion-option value="178">Cerro Nutibara y Pueblito Paisa</ion-option>
+      <ion-option value="177">Parque ecológico Piedras Blancas</ion-option>
+      <ion-option value="175">Jardín Botánico Joaquín Antonio Uribe</ion-option>
+      <ion-option value="174">Parque Zoológico Santa Fe</ion-option>
+      <ion-option value="172">Cascadas</ion-option>
+
+
+
+    <ion-item *ngIf="flagB5_8_1">
+      <ion-label class="titulo" stacked>¿Cuáles?(Visita a haciendas o fábricas donde enseñan el proceso del café, la panela, el banano, etc.)</ion-label>
+      <ion-select (ionChange)="showB5_8_1_otro()" [(ngModel)]="momento2.B5_8_1" placeholder="Seleccionar" name="B5_8_1" multiple="true" class="requiredSelect">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="184">Ruta del banano</ion-option>
+        <ion-option value="183">Ruta de la leche</ion-option>
+        <ion-option value="182">Ruta de la panela</ion-option>
+        <ion-option value="181">Ruta del café</ion-option>
+        <ion-option value="180">Ruta de los embalses</ion-option>
+        <ion-option value="40">Otro</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="flagB5_8_1_otro">
+      <ion-label class="titulo" stacked>¿Cuál Otro?(Visita a haciendas o fábricas donde enseñan el proceso del café, la panela, el banano, etc.)</ion-label>
+      <ion-input type="text" placeholder="" name="B5_8_1_otro" [(ngModel)]="momento2.B5_8_1_otro" class="requiredInput"></ion-input>
+    </ion-item>
+
+    <ion-option value="487">Sistema Integrado Metro</ion-option>
+      <!--<ion-label class="titulo" stacked> Seleccione los gastos realizados por usted antes (gastos de preparación del viaje a {{mainNameApp}}) </ion-label>-->
+
+      <!--<ion-item>
+      <ion-label class="titulo">
+        Preguntas complementarias
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Cuál de los siguientes medios utilizó para reservar?</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H1">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Directo (viajando por su propia cuenta)	</ion-option>
+          <ion-option value="2">Agencia</ion-option>
+          <ion-option value="3">Excursión</ion-option>
+          <ion-option value="4">Internet</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label class="titulo" stacked>¿Cuál fue su medio de pago?</ion-label>
+        <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H2">
+            <ion-label> Seleccione </ion-label>
+            <ion-option value="1">Efectivo</ion-option>
+            <ion-option value="2">Tarjeta de crédito</ion-option>
+            <ion-option value="3">Tarjeta débito</ion-option>
+            <ion-option value="4">Cheque</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <p>
+          ¿Considera que los precios de los productos en los siguientes establecimientos fueron competitivos (precio establecido por el mercado)?
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Hoteles</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H3_1">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Si</ion-option>
+          <ion-option value="2">No</ion-option>
+          <ion-option value="3">No aplica</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Medios de transporte</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H3_2">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Si</ion-option>
+          <ion-option value="2">No</ion-option>
+          <ion-option value="3">No aplica?</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Bares y Restaurantes</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H3_3">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Si</ion-option>
+          <ion-option value="2">No</ion-option>
+          <ion-option value="3">No aplica</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Discotecas</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H3_4">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Si</ion-option>
+          <ion-option value="2">No</ion-option>
+          <ion-option value="3">No aplica</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Tours</ion-label>
+      <ion-select placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H3_5">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Si</ion-option>
+          <ion-option value="2">No</ion-option>
+          <ion-option value="3">No aplica</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Qué cree usted que le hace falta a ____ ({{momento2.B4.name}}) para ser un destino atractivo para el turista vacacional?</ion-label>
+      <ion-select (ionChange)="showH4_otro()" placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H4">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Guía profesional de turismo</ion-option>
+          <ion-option value="2">Tours</ion-option>
+          <ion-option value="3">Aventura</ion-option>
+          <ion-option value="4">Mayor información turística</ion-option>
+          <ion-option value="5">Medios de transporte</ion-option>
+          <ion-option value="96">Otros</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="flagH4_otro">
+      <ion-label class="titulo" stacked>¿Otro?</ion-label>
+      <ion-input type="text" placeholder="" name="H4_otro" [(ngModel)]="momento2.H4_otro" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Qué tours quiso encontrar en ({{momento2.B4.name}})?</ion-label>
+      <ion-select (ionChange)="showH5_otro()" placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H5">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Tour gastronómico</ion-option>
+          <ion-option value="2">Tour de compras</ion-option>
+          <ion-option value="3">Tour histórico/cultural</ion-option>
+          <ion-option value="4">Tour religioso</ion-option>
+          <ion-option value="5">Tour ecológico</ion-option>
+          <ion-option value="6">Tour de transformación urban</ion-option>
+          <ion-option value="96">Otros</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="flagH5_otro">
+      <ion-label class="titulo" stacked>¿Otro?</ion-label>
+      <ion-input type="text" placeholder="" name="H5_otro" [(ngModel)]="momento2.H5_otro" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Cuáles actividades turísticas quisiera que se realizarán?</ion-label>
+      <ion-select (ionChange)="showH6_otro()" placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H6">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Encuentros religiosos</ion-option>
+          <ion-option value="2">Visita a museos</ion-option>
+          <ion-option value="3">Actividades ecoturística</ion-option>
+          <ion-option value="4">Recorrido histórico/cultural</ion-option>
+          <ion-option value="5">Eventos deportivos</ion-option>
+          <ion-option value="6">Visitas a mercados tradicionales y artesanales</ion-option>
+          <ion-option value="7">Convenciones y de negocios</ion-option>
+          <ion-option value="96">Otros</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="flagH6_otro">
+      <ion-label class="titulo" stacked>¿Otro?</ion-label>
+      <ion-input type="text" placeholder="" name="H6_otro" [(ngModel)]="momento2.H6_otro" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Cuáles características son importantes para usted a la hora de elegir un destino?</ion-label>
+      <ion-select (ionChange)="showH6_otro()" placeholder="Seleccionar" multiple="true" [(ngModel)]="momento2.H7">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Calidad del servicio</ion-option>
+          <ion-option value="2">Precio</ion-option>
+          <ion-option value="3">Lugares a visitar</ion-option>
+          <ion-option value="4">Incluya transporte</ion-option>
+          <ion-option value="5">Incluya alimentación</ion-option>
+          <ion-option value="6">Incluya hospedaje</ion-option>
+          <ion-option value="7">Itinerarios cumplidos</ion-option>
+          <ion-option value="96">Otros</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="flagH7_otro">
+      <ion-label class="titulo" stacked>¿Otro?</ion-label>
+      <ion-input type="text" placeholder="" name="H7_otro" [(ngModel)]="momento2.H7_otro" class="requiredInput"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Teniendo en cuenta la escala de calificaciones de Muy Buena, Buena, Ni buena/ni mala, Mala, Muy mala; ¿cómo percibía la imagen de la ciudad antes de visitarla? Y ¿por qué?</ion-label>
+      <ion-select placeholder="Seleccionar" [(ngModel)]="momento2.H8">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Muy Buena</ion-option>
+          <ion-option value="2">Buena</ion-option>
+          <ion-option value="3">Ni buena / Ni mala</ion-option>
+          <ion-option value="4">Mala</ion-option>
+          <ion-option value="5">Muy Mala</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Por qué?</ion-label>
+      <ion-input type="text" placeholder="" name="H8_otro" [(ngModel)]="momento2.H8_otro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Continuando con la misma escala, ¿cómo percibe la imagen de la ciudad después de visitarla? Y ¿por qué?</ion-label>
+      <ion-select placeholder="Seleccionar" [(ngModel)]="momento2.H9">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="1">Muy Buena</ion-option>
+          <ion-option value="2">Buena</ion-option>
+          <ion-option value="3">Ni buena / Ni mala</ion-option>
+          <ion-option value="4">Mala</ion-option>
+          <ion-option value="5">Muy Mala</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Por qué?</ion-label>
+      <ion-input type="text" placeholder="" name="H9_otro" [(ngModel)]="momento2.H9_otro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>¿Qué fue lo que más le gustó de ({{momento2.B4.name}}) en su estadía?</ion-label>
+      <ion-textarea placeholder="Enter a description" [(ngModel)]="momento2.H10" name="H10"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label class="titulo" stacked>Señor(a), ya para terminar, le solicito su autorización para que Fenalco {{mainNameApp}} comparta sus respuestas con las entidades que contrataron el proyecto, ¿Está de acuerdo?</ion-label>
+      <ion-select [(ngModel)]="momento2.H11" name="H11">
+        <ion-label> Seleccione </ion-label>
+        <ion-option value="1">Si</ion-option>
+        <ion-option value="2">No</ion-option>
+      </ion-select>
+    </ion-item>-->
+
+
+    <ion-item >
+      <ion-label class="titulo" stacked>Cidad</ion-label>
+      <ion-input (ionBlur)="validateMomento2()" type="text" placeholder="" name="city_other" [(ngModel)]="momento1.city_other" ></ion-input>
+      <ion-label class="titulo" stacked>¡Información:! Este departamento o estado no dispone de ciudades o municipios.</ion-label>
+    </ion-item>
+
+    SELECT receivermomentfirts.id, receivermomentfirts.country_id, receivermomentfirtscities.accommodation_id, receivermomentfirtscities.accommodation_other, receivermomentfirts.created  FROM receivermomentfirts INNER JOIN receivermomentfirtscities ON receivermomentfirts.id = receivermomentfirtscities.accommodation_id WHERE receivermomentfirtscities.created BETWEEN '2018-06-01 15:31:04' AND '2018-11-31 15:31:04';
+
+    <ion-item>
+        <ion-label class="titulo" stacked>¿Durante su viaje utilizó servicio de alojamiento?</ion-label>
+        <ion-select (ionChange)="showF1_1()" [(ngModel)]="momento2.F1" placeholder="Seleccionar" name="F1" class="requiredSelect">
+          <ion-label> Seleccione </ion-label>
+          <ion-option value="Si"> Si </ion-option>
+          <ion-option value="No"> No </ion-option>
+        </ion-select>
+      </ion-item>

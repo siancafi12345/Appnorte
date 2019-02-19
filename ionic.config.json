@@ -1,0 +1,13 @@
+{
+  "name": "situr",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/siturApi/",
+      "proxyUrl": "http://www.siturnortedesantander.com"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Encuesta Emisor</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <emisor-moment1 [hidden]="!flagMomento1"></emisor-moment1>
+  <div [hidden]="!flagMomento2">
+      <emisor-moment2 [datas]="i" ></emisor-moment2>
+      <div text-center>
+        <button (click)="save()" ion-button color="primary">Guardar</button>
+      </div>
+  </div>
+  
+</ion-content>
