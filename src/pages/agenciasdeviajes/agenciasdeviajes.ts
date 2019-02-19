@@ -18,6 +18,7 @@ import { StorageService } from "../../core/services/storage.service";
   selector: 'page-agenciasdeviajes',
   templateUrl: 'agenciasdeviajes.html',
 })
+
 export class AgenciasdeviajesPage {
   public dateStart:string= "" ;
   public mainNameApp: string;

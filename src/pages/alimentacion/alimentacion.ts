@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AppConfigurations } from "../../app/app.configuration";
 import { StorageService } from '../../core/services/storage.service';
 import { FunctionsGlobalsService } from '../../core/services/functions-globals.service';
+import * as moment from 'moment';
 
 /**
  * Generated class for the AlimentacionPage page.
@@ -15,21 +16,44 @@ import { FunctionsGlobalsService } from '../../core/services/functions-globals.s
   selector: 'page-alimentacion',
   templateUrl: 'alimentacion.html',
 })
+
 export class AlimentacionPage {
 
   private alimentacion : FormGroup;
   public mainNameApp: string;
   private appConfig:AppConfigurations;
 
+  telefonovalida: boolean = false;
+  telefonovalida1: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     private functions: FunctionsGlobalsService
   ) {
     this.appConfig=new AppConfigurations();
+    
+
     this.mainNameApp=this.appConfig.mainNameApp;
+    var now=  moment();
+    
     this.alimentacion = this.formBuilder.group({
       nombre: [this.storageService.user.data.user.fullname],
+      dateStart:  moment(now.format(), moment.ISO_8601).format(),
+      name:[''],
+      date_year:[''],
+      foot_category:[''],
+      foot_category_other:[''],
+      municipality_id:[''],
+      address:[''],
+      contact:[''],
+      position_id:[''],
+      other_position:[''],
+      phone_number:[''],
+      phone_ext:[''],
+      cell_phone:[''],
+      email:[''],
+      
+
       prestador: ['', Validators.required],
       tipo_establecimiento: [''],
       especialidad_establecimiento: [''],
@@ -100,5 +124,48 @@ export class AlimentacionPage {
     this.storageService.saveStorageForm('alimentacion', this.alimentacion.value);
   }
 
+  validar(){
+    console.log(this.alimentacion.value.foot_category);
+  }
+
+  public telefono(val){
+    let telefono = this.alimentacion.value.phone_number;
+    console.log(val);
+    console.log(telefono);
+    
+    
+    if(telefono.length > val){
+      
+      this.alimentacion.reset({phone_number:""});
+      this.telefonovalida = true;
+      
+      
+    }else{
+      this.telefonovalida = false;
+      
+  
+    }
+    
+  }
+
+  public celular(val){
+    let telefono = this.alimentacion.value.cell_phone;
+    console.log(val);
+    console.log(telefono);
+    
+    
+    if(telefono.length > val){
+      this.alimentacion.reset({cell_phone:""});
+      
+      this.telefonovalida1 = true;
+      
+      
+    }else{
+      this.telefonovalida1 = false;
+      
+  
+    }
+    
+  }
 
 }
