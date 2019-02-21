@@ -35,9 +35,9 @@
                 <ion-icon name="person" item-start></ion-icon>
                 <ion-input type="text" placeholder="Nombre" disabled class="no_border" name="A0" formControlName="nombre"></ion-input>
             </ion-item>
-      
-
-
+            <ion-item>
+                <ion-label class="titulo"> Parte A. Datos del establecimiento </ion-label>
+            </ion-item>
             <ion-item>
               <ion-label floating>Nombre del establecimiento: </ion-label>
               <ion-input formControlName="name" class="requiredSelect"></ion-input>
@@ -193,6 +193,107 @@
                 <ion-label class="titulo" stacked>E-mail</ion-label>
                 <ion-input formControlName="email" class="requiredInput" type="email"  placeholder="" ngModel email="true"></ion-input>
             </ion-item> 
+            <ion-item>
+                <ion-label class="titulo"> Parte B. Actividad comercial </ion-label>
+            </ion-item>
+            <ion-item>
+               <ion-note item-start>
+                    Las preguntas que a continuación le voy a formular están relacionadas con la actividad del servicio y la capacidad de atención durante el mes anterior.
+               </ion-note>
+            </ion-item>
+            <ion-list radio-group formControlName="comercial_activity">
+              <ion-item>
+                  <ion-label>
+                     ¿En el mes anterior el establecimiento estuvo en actividad comercial?
+                  </ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Si</ion-label>
+                  <ion-radio value="si"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label>NO</ion-label>
+                  <ion-radio value="no"></ion-radio>
+              </ion-item>
+
+              <ion-item *ngIf="alimentacion.value.comercial_activity !== ''">
+                   <ion-label floating> ¿Cuántos días en el mes? </ion-label>
+                  <ion-input formControlName="count_comercial_activity" type="text"></ion-input>
+              </ion-item>
+            </ion-list>
+            <ion-item>
+                <ion-label class="titulo"> Parte C. Capacidad del establecimiento </ion-label>
+            </ion-item>
+
+            <ion-item>
+               <ion-note item-start>
+                    Las preguntas que a continuación le voy a formular están relacionadas con la actividad del servicio y la capacidad de atención durante el mes anterior.
+               </ion-note>
+            </ion-item>
+            <ion-list radio-group formControlName="food_service">
+              <ion-item>
+                  <ion-label>
+                     ¿En el restaurante se sirven principalmente platos de comida o unidades de comida
+                  </ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Platos de comida</ion-label>
+                  <ion-radio value="31"></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Unidades de comida</ion-label>
+                  <ion-radio value="32"></ion-radio>
+              </ion-item>
+            </ion-list>
+            <ion-item *ngIf="alimentacion.value.food_service !== ''">
+               <ion-label floating> Número de mesas disponibles: </ion-label>
+               <ion-input type="number" formControlName="mesas_disponibles"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service !== ''">
+               <ion-label floating> Número de asientos disponibles: </ion-label>
+               <ion-input type="number" formControlName="seating_number"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                 <ion-label floating> ¿Cuántos platos de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior? </ion-label>
+                <ion-input formControlName="food_units_prom" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                 <ion-label floating> ¿Cuántas unidades de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior </ion-label>
+                <ion-input formControlName="food_units_prom" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
+                <ion-input formControlName="dish_cost" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
+                <ion-input formControlName="dish_cost" type="text"></ion-input>
+            </ion-item>
+
+
+
+<!--
+            <ion-item *ngIf="alimentacion.value.food_service !== ''">
+                 <ion-label floating> ¿Cuánto vale la comida que más se vendió en el mes de Diciembre?($) </ion-label>
+                <ion-input formControlName="valor_diciembre" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service !== ''">
+                 <ion-label floating> ¿Cuántos vinos se vendieron efectivamente? </ion-label>
+                <ion-input formControlName="vinos_vendidos" type="text"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="alimentacion.value.food_service !== ''">
+                 <ion-label floating> ¿Cuántos postres se vendieron efectivamente? </ion-label>
+                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+            </ion-item>
+     -->
 
 
 
@@ -200,160 +301,7 @@
 
 
 
-
-
-
-
-
-
-
-      <ion-item>
-         <ion-note item-start>
-            La información suministrada es clave para el diseño de los planes de desarrollo para la industria turística del departamento y la inversión pública y privada.
-         </ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-label floating> Prestador</ion-label>
-    </ion-item>
-      <ion-item>
-           <ion-select formControlName="prestador" placeholder="Seleccionar">
-               <ion-label> Prestador </ion-label>
-               <ion-option value="agencia">Agencia de viajes y turismo AVIATUR</ion-option>
-               <ion-option value="falta">Aviatur Villanueva</ion-option>
-           </ion-select>
-       </ion-item>
-       <ion-item>
-          <ion-label class="titulo"> Parte A. Datos del establecimiento </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label floating> Tipo de establecimiento</ion-label>
-    </ion-item>
-      <ion-item>
-        <ion-select formControlName="tipo_establecimiento" placeholder="Seleccionar" multiple="true">
-            <ion-label> Tipo de establecimiento </ion-label>
-            <ion-option value="microbus">Microbus</ion-option>
-            <ion-option value="escalera">Escalera</ion-option>
-            <ion-option value="camioneta">Camioneta</ion-option>
-            <ion-option value="buseta">Buseta</ion-option>
-            <ion-option value="bus">Bus</ion-option>
-            <ion-option value="automovil">Automóvil</ion-option>
-            <ion-option value="otro">Otro</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label floating> Especialidad del establecimiento </ion-label>
-    </ion-item>
-    <ion-item>
-        <ion-select formControlName="especialidad_establecimiento" placeholder="Seleccionar" multiple="true">
-            <ion-label> Especialidad del establecimiento </ion-label>
-            <ion-option value="microbus">Microbus</ion-option>
-            <ion-option value="escalera">Escalera</ion-option>
-            <ion-option value="camioneta">Camioneta</ion-option>
-            <ion-option value="buseta">Buseta</ion-option>
-            <ion-option value="bus">Bus</ion-option>
-            <ion-option value="automovil">Automóvil</ion-option>
-            <ion-option value="otro">Otro</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label floating> Año de fundación </ion-label>
-    </ion-item>
-    <ion-item>
-        <ion-select formControlName="ano_fundacion" placeholder="Seleccionar" multiple="true">
-            <ion-label> Año de fundación </ion-label>
-            <ion-option value="microbus">Microbus</ion-option>
-            <ion-option value="escalera">Escalera</ion-option>
-            <ion-option value="camioneta">Camioneta</ion-option>
-            <ion-option value="buseta">Buseta</ion-option>
-            <ion-option value="bus">Bus</ion-option>
-            <ion-option value="automovil">Automóvil</ion-option>
-            <ion-option value="otro">Otro</ion-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-         <ion-note item-start>
-            El objetivo de conocer la oferta es comunicar en el Sistema de Información Turística de {{mainNameApp}} a todos los interesados en organizar eventos en {{mainNameApp}} y viajar a {{mainNameApp}} la capacidad de atención de los restaurantes actualizada mes a mes.
-         </ion-note>
-      </ion-item>
-    <ion-list radio-group formControlName="platos">
-        <ion-item>
-            <ion-label>
-               ¿En el restaurante se sirven principalmente platos de comida o unidades de comida
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Platos de comida</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Unidades de comida</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-     <ion-item>
-         <ion-label floating> Número de mesas disponibles: </ion-label>
-         <ion-input type="number" formControlName="mesas_disponibles"></ion-input>
-      </ion-item>
-      <ion-item>
-         <ion-label floating> Número de asientos disponibles: </ion-label>
-         <ion-input type="number" formControlName="asientos_disponibles"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label class="titulo"> Parte B. Actividad comercial </ion-label>
-      </ion-item>
-      <ion-item>
-         <ion-note item-start>
-            El objetivo de conocer la actividad comercial por mes es para establecer la disponibilidad del servicio de alimentos en un momento dado.
-         </ion-note>
-      </ion-item>
-      <ion-list radio-group formControlName="actividad_comercial">
-        <ion-item>
-            <ion-label>
-               ¿En el mes de Diciembre el establecimiento estuvo en actividad comercial?
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Platos de comida</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>Unidades de comida</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-        <ion-item *ngIf="alimentacion.value.actividad_comercial !== ''">
-             <ion-label floating> ¿Cuántos días en el mes? </ion-label>
-            <ion-input formControlName="dias_mes" type="text"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-item>
-          <ion-label class="titulo"> Parte C. Capacidad del establecimiento </ion-label>
-      </ion-item>
-      <ion-item>
-         <ion-note item-start>
-            El objetivo de conocer la oferta es comunicar en el Sistema de Información Turística de {{mainNameApp}} a todos los interesados en organizar eventos en {{mainNameApp}} y viajar a {{mainNameApp}}, la capacidad de atención de los restaurantes actualizada mes a mes y calcular una tarifa promedio que sirva de referencia para que los viajeros planeen su viaje a {{mainNameApp}}.
-         </ion-note>
-      </ion-item>
-
-      <ion-item *ngIf="alimentacion.value.platos !== ''">
-           <ion-label floating> ¿Cuántas unidades de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes de Diciembre? </ion-label>
-          <ion-input formControlName="unidades_max" type="text"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="alimentacion.value.platos !== ''">
-           <ion-label floating> ¿Cuántas unidades de comida se sirvieron en el mes de Diciembre? </ion-label>
-          <ion-input formControlName="unidades_diciembre" type="text"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="alimentacion.value.platos !== ''">
-           <ion-label floating> ¿Cuánto vale la comida que más se vendió en el mes de Diciembre?($) </ion-label>
-          <ion-input formControlName="valor_diciembre" type="text"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="alimentacion.value.platos !== ''">
-           <ion-label floating> ¿Cuántos vinos se vendieron efectivamente? </ion-label>
-          <ion-input formControlName="vinos_vendidos" type="text"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="alimentacion.value.platos !== ''">
-           <ion-label floating> ¿Cuántos postres se vendieron efectivamente? </ion-label>
-          <ion-input formControlName="postres_vendidos" type="text"></ion-input>
-      </ion-item>
+     
       <ion-item>
           <ion-label class="titulo"> Parte D. Atención a visitantes no residentes en {{mainNameApp}} </ion-label>
       </ion-item>

@@ -52,22 +52,31 @@ export class AlimentacionPage {
       phone_ext:[''],
       cell_phone:[''],
       email:[''],
+      comercial_activity: [''],
+      count_comercial_activity: [''],
+      food_service: [''],
+      seating_number: [''],
+      food_units_prom:[''],
+      food_dishes_all: [''],
+      dish_cost: [''],
+
+
+
+
+
+
+
       
 
       prestador: ['', Validators.required],
       tipo_establecimiento: [''],
       especialidad_establecimiento: [''],
       ano_fundacion: [''],
-      platos: [''],
       unidades_max: [''],
       unidades_diciembre: [''],
       valor_diciembre: [''],
       vinos_vendidos: [''],
-      postres_vendidos: [''],
       mesas_disponibles: [''],
-      asientos_disponibles: [''],
-      actividad_comercial: [''],
-      dias_mes: [''],
       cientes_porcentaje: [''],
       lunes_apertura: [''],
       lunes_cierre: [''],
