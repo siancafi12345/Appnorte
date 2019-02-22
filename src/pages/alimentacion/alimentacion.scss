@@ -11,4 +11,10 @@ page-alimentacion {
     ion-input.ng-dirty.ng-invalid {
         background-color: red
       }
+
+      .scroll {
+        width: 100%;
+        height: 100%;
+        overflow:auto;
+   }
 }

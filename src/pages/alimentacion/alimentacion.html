@@ -4,6 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<div #container class="scroll">
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -15,7 +16,7 @@
 
 
 <ion-content padding>
-  <form [formGroup]="alimentacion" (ngSubmit)="logForm()">
+  <form [formGroup]="alimentacion" (ngSubmit)="save($event)">
 
         <ion-item>
                 <ion-label>
@@ -40,11 +41,11 @@
             </ion-item>
             <ion-item>
               <ion-label floating>Nombre del establecimiento: </ion-label>
-              <ion-input formControlName="name" class="requiredSelect"></ion-input>
+              <ion-input formControlName="name" class="requiredInput"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo"> Año de fundación </ion-label>
-                <ion-datetime formControlName="date_year"  displayFormat="YYYY"></ion-datetime>
+                <ion-datetime formControlName="date_year"  displayFormat="YYYY" class="requiredSelect"></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo">Especialidad principal del establecimiento. </ion-label>
@@ -71,7 +72,7 @@
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo"> Municipio </ion-label>
-                <ion-select formControlName="municipality_id" placeholder="Seleccionar" class="requiredSelect">
+                <ion-select formControlName="municipality_id" placeholder="Seleccionar" >
                     <ion-option value="781">ÁBREGO</ion-option>
                     <ion-option value="782">ARBOLEDAS</ion-option>
                     <ion-option value="783">BOCHALEMA</ion-option>
@@ -124,7 +125,7 @@
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo"> Cargo</ion-label>
-                <ion-select formControlName="position_id"  placeholder="Seleccionar" class="requiredSelect">
+                <ion-select formControlName="position_id"  placeholder="Seleccionar" >
                     <ion-option value="9253">Abogado</ion-option>
                     <ion-option value="3413">Agente de viajes</ion-option>
                     <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>
@@ -201,26 +202,27 @@
                     Las preguntas que a continuación le voy a formular están relacionadas con la actividad del servicio y la capacidad de atención durante el mes anterior.
                </ion-note>
             </ion-item>
-            <ion-list radio-group formControlName="comercial_activity">
-              <ion-item>
-                  <ion-label>
-                     ¿En el mes anterior el establecimiento estuvo en actividad comercial?
-                  </ion-label>
-              </ion-item>
-              <ion-item>
-                  <ion-label>Si</ion-label>
-                  <ion-radio value="si"></ion-radio>
-              </ion-item>
-              <ion-item>
-                  <ion-label>NO</ion-label>
-                  <ion-radio value="no"></ion-radio>
-              </ion-item>
+            
+              
+
+            <ion-item>
+                <ion-label stacked class="titulo">En el mes anterior el establecimiento estuvo en actividad comercial?</ion-label>
+                <ion-select formControlName="comercial_activity" placeholder="Seleccionar"  class="requiredSelect">
+                    
+                    <ion-option value="si">Si</ion-option>
+                    <ion-option value="no">No</ion-option>
+                </ion-select>
+            </ion-item>
 
               <ion-item *ngIf="alimentacion.value.comercial_activity !== ''">
                    <ion-label floating> ¿Cuántos días en el mes? </ion-label>
-                  <ion-input formControlName="count_comercial_activity" type="text"></ion-input>
+                  <ion-input formControlName="count_comercial_activity" type="text" (keyup)="dias(30)"></ion-input>
               </ion-item>
-            </ion-list>
+              <ion-label *ngIf="diasvalida"  class="titulo1"> El numero de días no debe ser mayor a 30</ion-label>
+           
+            
+
+            
             <ion-item>
                 <ion-label class="titulo"> Parte C. Capacidad del establecimiento </ion-label>
             </ion-item>
@@ -230,70 +232,69 @@
                     Las preguntas que a continuación le voy a formular están relacionadas con la actividad del servicio y la capacidad de atención durante el mes anterior.
                </ion-note>
             </ion-item>
-            <ion-list radio-group formControlName="food_service">
+            <ion-list >
+             
               <ion-item>
-                  <ion-label>
-                     ¿En el restaurante se sirven principalmente platos de comida o unidades de comida
-                  </ion-label>
-              </ion-item>
-              <ion-item>
-                  <ion-label>Platos de comida</ion-label>
-                  <ion-radio value="31"></ion-radio>
-              </ion-item>
-              <ion-item>
-                  <ion-label>Unidades de comida</ion-label>
-                  <ion-radio value="32"></ion-radio>
-              </ion-item>
+                <ion-label stacked class="titulo"> ¿¿En el restaurante se sirven principalmente platos de comida o unidades de comida? </ion-label>
+                <ion-select formControlName="food_service" placeholder="Seleccionar" class="requiredSelect">
+                    <ion-option value="31">Platos de comida</ion-option>
+                    <ion-option value="32">Unidades de comida</ion-option>
+                </ion-select>
+            </ion-item>
             </ion-list>
-            <ion-item *ngIf="alimentacion.value.food_service !== ''">
-               <ion-label floating> Número de mesas disponibles: </ion-label>
-               <ion-input type="number" formControlName="mesas_disponibles"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service !== ''">
-               <ion-label floating> Número de asientos disponibles: </ion-label>
-               <ion-input type="number" formControlName="seating_number"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '31'">
-                 <ion-label floating> ¿Cuántos platos de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior? </ion-label>
-                <ion-input formControlName="food_units_prom" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '32'">
-                 <ion-label floating> ¿Cuántas unidades de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior </ion-label>
-                <ion-input formControlName="food_units_prom" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '31'">
-                <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
-                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '31'">
-                <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
-                <ion-input formControlName="dish_cost" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '32'">
-                <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
-                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service == '32'">
-                <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
-                <ion-input formControlName="dish_cost" type="text"></ion-input>
-            </ion-item>
+            <div *ngIf="alimentacion.value.comercial_activity == 'si'">
+                <ion-item *ngIf="alimentacion.value.food_service !== ''">
+                   <ion-label floating> Número de mesas disponibles: </ion-label>
+                   <ion-input type="number" formControlName="mesas_disponibles"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service !== ''">
+                   <ion-label floating> Número de asientos disponibles: </ion-label>
+                   <ion-input type="number" formControlName="seating_number"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                     <ion-label floating> ¿Cuántos platos de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior? </ion-label>
+                    <ion-input formControlName="food_units_prom" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                     <ion-label floating> ¿Cuántas unidades de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior </ion-label>
+                    <ion-input formControlName="food_units_prom" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                    <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                    <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '31'">
+                    <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
+                    <ion-input formControlName="dish_cost" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                    <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                    <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="alimentacion.value.food_service == '32'">
+                    <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
+                    <ion-input formControlName="dish_cost" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label class="titulo"> Parte D. Atención a visitantes no residentes en {{mainNameApp}} </ion-label>
+                </ion-item>
+                <ion-item>
+                   <ion-note item-start>
+                      La siguiente pregunta va permitir realizar una aproximación al número de clientes que son visitantes no residentes en Norte de Santander que son atendidos en los establecimientos comerciales.
+                   </ion-note>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating> ¿Qué porcentaje de sus clientes del mes anterior considera son de otras regiones fuera de {{mainNameApp}}? </ion-label>
+                    <ion-input formControlName="percentage_customers" type="number" (keyup)="dias1(100)"></ion-input>
+                </ion-item>
+                <ion-label *ngIf="diasvalida1"  class="titulo1"> El numero de días no debe ser mayor a 100</ion-label>
+                
+                
+
+            </div>
 
 
 
-<!--
-            <ion-item *ngIf="alimentacion.value.food_service !== ''">
-                 <ion-label floating> ¿Cuánto vale la comida que más se vendió en el mes de Diciembre?($) </ion-label>
-                <ion-input formControlName="valor_diciembre" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service !== ''">
-                 <ion-label floating> ¿Cuántos vinos se vendieron efectivamente? </ion-label>
-                <ion-input formControlName="vinos_vendidos" type="text"></ion-input>
-            </ion-item>
-            <ion-item *ngIf="alimentacion.value.food_service !== ''">
-                 <ion-label floating> ¿Cuántos postres se vendieron efectivamente? </ion-label>
-                <ion-input formControlName="food_dishes_all" type="text"></ion-input>
-            </ion-item>
-     -->
 
 
 
@@ -302,375 +303,16 @@
 
 
      
-      <ion-item>
-          <ion-label class="titulo"> Parte D. Atención a visitantes no residentes en {{mainNameApp}} </ion-label>
-      </ion-item>
-      <ion-item>
-         <ion-note item-start>
-            La siguiente pregunta permite realizar una aproximación al número de clientes que son visitantes no residentes en {{mainNameApp}} que son atendidos en los establecimientos comerciales.
-         </ion-note>
-      </ion-item>
-      <ion-item>
-          <ion-label>¿Qué porcentaje de sus clientes del mes de Diciembre considera son de otras regiones fuera de {{mainNameApp}}?</ion-label>
-          <ion-input type="number" formControlName="cientes_porcentaje"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label class="titulo"> Parte E. Horario de atención </ion-label>
-      </ion-item>
-      <ion-item>
-         <ion-note item-start>
-            ¿Cuál es el horario al público?
-         </ion-note>
-      </ion-item>
-      <ion-list>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="lunes_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="lunes_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-            <ion-list>
-        <ion-item>
-          <ion-label> Martes</ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="martes_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="martes_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label> Miercoles</ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="miercoles_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="miercoles_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label> Jueves</ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="jueves_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="jueves_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label> Viernes </ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="viernes_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="viernes_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label> Sabado</ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="sabado_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="sabado_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-label> Domingo </ion-label>
-        </ion-item>
-        <ion-item>
-           <ion-select placeholder="Apertura" formControlName="domingo_apertura">
-              <ion-label>Apertura</ion-label>
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-           <ion-select placeholder="Cierre" formControlName="domingo_cierre">
-              <ion-option value="1">1</ion-option>
-              <ion-option value="2">2</ion-option>
-           </ion-select>
-        </ion-item>
-      </ion-list>
-      <ion-item>
-          <ion-label class="titulo"> Parte F. Servicios complementarios </ion-label>
-      </ion-item>
-      <ion-item>
-         <ion-note item-start>
-            ¿Cuáles servicios complementarios ofrece el restaurante?
-         </ion-note>
-      </ion-item>
-      <ion-list radio-group formControlName="area_recepcion">
-        <ion-item>
-            <ion-label>
-                Área de recepción donde se brinde información telefónica acerca de horarios, inquietudes de cliente y reservaciones
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="banos_independientes">
-        <ion-item>
-            <ion-label>
-                Baños independientes para hombre y mujer
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="auditorio_eventos">
-        <ion-item>
-            <ion-label>
-                Auditorio para eventos
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="servicio_eventos">
-        <ion-item>
-            <ion-label>
-                Servicio de atención a eventos
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="zona_juegos">
-        <ion-item>
-            <ion-label>
-                Zona de juegos o entretenimiento
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="servicio_domicilio">
-        <ion-item>
-            <ion-label>
-                Servicio a domicilio
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="parqueadero_propio">
-        <ion-item>
-            <ion-label>
-                Parqueadero propio
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="postres">
-        <ion-item>
-            <ion-label>
-                Carta de postres y/o helados
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="vinos">
-        <ion-item>
-            <ion-label>
-                Carta de vinos
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="licores">
-        <ion-item>
-            <ion-label>
-                Carta de licores
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="cafeteria">
-        <ion-item>
-            <ion-label>
-                Carta de cafetería
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="menu_dia">
-        <ion-item>
-            <ion-label>
-                Menú del día
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-list radio-group formControlName="otro">
-        <ion-item>
-            <ion-label>
-                Menú del día
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-item *ngIf="alimentacion.value.otro == 'si'">
-           <ion-label floating> Otro Complemento </ion-label>
-          <ion-input formControlName="otro_complemento" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label class="titulo"> Parte G. Convenios </ion-label>
-      </ion-item>
-      <ion-list radio-group formControlName="convenios_si">
-        <ion-item>
-            <ion-label>
-                ¿Tiene convenios con otros establecimientos?
-            </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-label>Si</ion-label>
-            <ion-radio value="si"></ion-radio>
-        </ion-item>
-        <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio value="no"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-item *ngIf="alimentacion.value.convenios_si === 'si'">
-           <ion-label floating> ¿Con qué tipo de establecimientos tiene convenios?</ion-label>
-          <ion-select formControlName="tipo_establecimiento_convenio" placeholder="Seleccionar">
-               <ion-label> Tipo de establecimientos </ion-label>
-               <ion-option value="agencia">Agencia de viajes y turismo AVIATUR</ion-option>
-               <ion-option value="falta">Aviatur Villanueva</ion-option>
-           </ion-select>
-      </ion-item>
-      <ion-row>
+    <ion-row>
         <ion-item text-center>
-          <button ion-button type="button" color="dark" (click)="offlineForm()">Guardar</button>
-          <button ion-button type="submit" [disabled]="!alimentacion.valid">Enviar</button>
+           <!-- <button ion-button type="button" color="dark" (click)="offlineForm()">Guardar</button> 
+          <button ion-button type="submit" [disabled]="!alimentacion.valid">Enviar</button> -->
+          <!-- <button  ion-button color="primary" [disabled]="!alimentacion.valid">Guardar</button> -->
+          <button  ion-button color="primary" >Guardar</button>
+
         </ion-item>
       </ion-row>
   </form>
 </ion-content>
-
+</div>
 

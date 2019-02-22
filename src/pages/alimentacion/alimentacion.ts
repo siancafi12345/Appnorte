@@ -4,6 +4,11 @@ import { AppConfigurations } from "../../app/app.configuration";
 import { StorageService } from '../../core/services/storage.service';
 import { FunctionsGlobalsService } from '../../core/services/functions-globals.service';
 import * as moment from 'moment';
+import { AppSaveForm } from '../../services/app.save.form.service';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { AppValidations } from '../../app/app.validations';
+import { ViewChild, ElementRef } from '@angular/core';
+
 
 /**
  * Generated class for the AlimentacionPage page.
@@ -25,10 +30,19 @@ export class AlimentacionPage {
 
   telefonovalida: boolean = false;
   telefonovalida1: boolean = false;
+  diasvalida: boolean = false;
+  diasvalida1: boolean = false;
+
+  @ViewChild("container") container: ElementRef;
   constructor(
+    public navCtrl: NavController,
+    private saveForm:AppSaveForm,
+    private validations:AppValidations,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
-    private functions: FunctionsGlobalsService
+    private alertCtrl: AlertController,
+    private functions: FunctionsGlobalsService,
+    private toastCtrl: ToastController
   ) {
     this.appConfig=new AppConfigurations();
     
@@ -59,56 +73,10 @@ export class AlimentacionPage {
       food_units_prom:[''],
       food_dishes_all: [''],
       dish_cost: [''],
-
-
-
-
-
-
-
-      
-
-      prestador: ['', Validators.required],
-      tipo_establecimiento: [''],
-      especialidad_establecimiento: [''],
-      ano_fundacion: [''],
-      unidades_max: [''],
-      unidades_diciembre: [''],
-      valor_diciembre: [''],
-      vinos_vendidos: [''],
+      percentage_customers: [''],
       mesas_disponibles: [''],
-      cientes_porcentaje: [''],
-      lunes_apertura: [''],
-      lunes_cierre: [''],
-      martes_apertura: [''],
-      martes_cierre: [''],
-      miercoles_apertura: [''],
-      miercoles_cierre: [''],
-      jueves_apertura: [''],
-      jueves_cierre: [''],
-      viernes_apertura: [''],
-      viernes_cierre: [''],
-      sabado_apertura: [''],
-      sabado_cierre: [''],
-      domingo_apertura: [''],
-      domingo_cierre: [''],
-      otro_servicio: [''],
-      area_recepcion: [''],
-      banos_independientes: [''],
-      auditorio_eventos: [''],
-      servicio_eventos: [''],
-      otro_complemento: [''],
-      otro: [''],
-      menu_dia: [''],
-      cafeteria: [''],
-      licores: [''],
-      vinos: [''],
-      postres: [''],
-      parqueadero_propio: [''],
-      servicio_domicilio: [''],
-      zona_juegos: [''],
-      convenios_si: [''],
-      tipo_establecimiento_convenio: ['']
+
+
     });
   }
 
@@ -145,7 +113,7 @@ export class AlimentacionPage {
     
     if(telefono.length > val){
       
-      this.alimentacion.reset({phone_number:""});
+      //this.alimentacion.reset({phone_number:""});
       this.telefonovalida = true;
       
       
@@ -164,7 +132,7 @@ export class AlimentacionPage {
     
     
     if(telefono.length > val){
-      this.alimentacion.reset({cell_phone:""});
+      //this.alimentacion.reset({cell_phone:""});
       
       this.telefonovalida1 = true;
       
@@ -175,6 +143,91 @@ export class AlimentacionPage {
   
     }
     
+  }
+
+  public dias(val){
+    let telefono = this.alimentacion.value.count_comercial_activity;
+    console.log(val);
+    console.log(telefono);
+    
+    
+    if(telefono > val){
+      //this.alimentacion.reset({count_comercial_activity:""});
+      
+      this.diasvalida = true;
+      
+      
+    }else{
+      this.diasvalida = false;
+      
+  
+    }
+
+    
+    
+  }
+
+  public dias1(val){
+    let telefono = this.alimentacion.value.percentage_customers;
+    console.log(val);
+    console.log(telefono);
+    
+    
+    if(telefono > val){
+      //this.alimentacion.reset({percentage_customers:""});
+      
+      this.diasvalida = true;
+      
+      
+    }else{
+      this.diasvalida = false;
+      
+  
+    }
+
+    
+    
+  }
+
+  public save(e)
+  {
+    //let nombre = this.alimentacion.value.nombre;
+    //console.log( nombre );
+    //this.alojamiento.A0 = this.A0;
+     if(this.validations.validate(this.container))
+     {
+       var flag=this.saveForm.save(
+         this.alimentacion,
+         this.appConfig.form5.number,
+         this.appConfig.form5.name);
+       if(flag)
+       {
+         this.navCtrl.setRoot(AlimentacionPage);
+       }
+       let toast = this.toastCtrl.create(
+         {
+           message: 'Toda la informacion se lleno correctamente',
+           duration: 3000,
+           position: 'bottom'
+         });
+         toast.present();
+    }
+    else
+    {
+       let alert = this.alertCtrl.create({
+         title: 'Alerta!!!',
+         message: 'Por favor llenar campos en rojo',
+         buttons: [          
+           {
+             text: 'OK',
+             handler: () => {
+               console.log('Buy clicked');
+             }
+           }
+         ]
+       });
+       alert.present();
+     }
   }
 
 }
