@@ -46,35 +46,5 @@ export class EventEmiterService {
     this.eventEmisorSave.emit(flag);
   }
   
-  /*sendMenuChange(menu: MenuModel) {
-    this.eventMenuChange.emit(menu);
-  }
-
-  sendIsMenuOpen(flag: boolean) {
-    this.eventIsMenuOpen.emit(flag);
-  }
-
-  sendIsScrolling()
-  {
-    if(this.countScroll>0)
-    {
-      this.eventIsScrolling.emit(true);
-    }
-    this.countScroll++;
-    setTimeout(() => this.lessCount(), 1000);
-  }
-
-  sendCurrentUrlFriendly(urlFriendly)
-  {
-    this.eventUrlFriendly.emit(urlFriendly);
-  }
-
-  lessCount()
-  {
-      this.countScroll--;
-      if(this.countScroll==0)
-      {
-        this.eventIsScrolling.emit(false);
-      }
-  }*/
+ 
 }

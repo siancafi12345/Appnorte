@@ -45,11 +45,11 @@
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo"> Año de fundación </ion-label>
-                <ion-datetime formControlName="date_year"  displayFormat="YYYY" class="requiredSelect"></ion-datetime>
+                <ion-datetime formControlName="date_year"  displayFormat="YYYY" required></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo">Especialidad principal del establecimiento. </ion-label>
-                <ion-select formControlName="foot_category" placeholder="Seleccionar" (ionChange)="validar()" class="requiredSelect">
+                <ion-select formControlName="foot_category" placeholder="Seleccionar" (ionChange)="validar()" required>
                     <ion-option value="728">China </ion-option>
                     <ion-option value="732">Comida rápida </ion-option>
                     <ion-option value="735">Española</ion-option>
@@ -68,7 +68,7 @@
             </ion-item>
             <ion-item *ngIf="alimentacion.value.foot_category== 40">
               <ion-label floating>Otra, ¿Cual? </ion-label>
-              <ion-input formControlName="foot_category_other" class="requiredSelect"></ion-input>
+              <ion-input formControlName="foot_category_other" ></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label stacked class="titulo"> Municipio </ion-label>
@@ -207,7 +207,7 @@
 
             <ion-item>
                 <ion-label stacked class="titulo">En el mes anterior el establecimiento estuvo en actividad comercial?</ion-label>
-                <ion-select formControlName="comercial_activity" placeholder="Seleccionar"  class="requiredSelect">
+                <ion-select formControlName="comercial_activity" placeholder="Seleccionar"  required>
                     
                     <ion-option value="si">Si</ion-option>
                     <ion-option value="no">No</ion-option>
@@ -235,8 +235,8 @@
             <ion-list >
              
               <ion-item>
-                <ion-label stacked class="titulo"> ¿¿En el restaurante se sirven principalmente platos de comida o unidades de comida? </ion-label>
-                <ion-select formControlName="food_service" placeholder="Seleccionar" class="requiredSelect">
+                <ion-label stacked class="titulo"> ¿En el restaurante se sirven principalmente platos de comida o unidades de comida? </ion-label>
+                <ion-select formControlName="food_service" placeholder="Seleccionar" required>
                     <ion-option value="31">Platos de comida</ion-option>
                     <ion-option value="32">Unidades de comida</ion-option>
                 </ion-select>
@@ -305,11 +305,8 @@
      
     <ion-row>
         <ion-item text-center>
-           <!-- <button ion-button type="button" color="dark" (click)="offlineForm()">Guardar</button> 
-          <button ion-button type="submit" [disabled]="!alimentacion.valid">Enviar</button> -->
-          <!-- <button  ion-button color="primary" [disabled]="!alimentacion.valid">Guardar</button> -->
-          <button  ion-button color="primary" >Guardar</button>
-
+                     
+          <button  ion-button color="primary" [disabled]="alimentacion.value.date_year == null && alimentacion.value.foot_category == null && alimentacion.value.municipality_id == null && alimentacion.value.position_id == null && alimentacion.value.comercial_activity == null && alimentacion.value.food_service == null" >Guardar</button>
         </ion-item>
       </ion-row>
   </form>

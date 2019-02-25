@@ -67,8 +67,8 @@ export class TransportePage {
     {
       var flag=this.saveForm.save(
         this.transporte,
-        this.appConfig.form5.number,
-        this.appConfig.form5.name);
+        this.appConfig.form3.number,
+        this.appConfig.form3.name);
       if(flag)
       {
         this.navCtrl.setRoot(TransportePage);

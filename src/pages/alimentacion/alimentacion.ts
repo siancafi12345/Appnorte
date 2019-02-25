@@ -54,21 +54,21 @@ export class AlimentacionPage {
       nombre: [this.storageService.user.data.user.fullname],
       dateStart:  moment(now.format(), moment.ISO_8601).format(),
       name:[''],
-      date_year:[''],
-      foot_category:[''],
+      date_year:null,
+      foot_category:null,
       foot_category_other:[''],
-      municipality_id:[''],
+      municipality_id:null,
       address:[''],
       contact:[''],
-      position_id:[''],
+      position_id:null,
       other_position:[''],
       phone_number:[''],
       phone_ext:[''],
       cell_phone:[''],
       email:[''],
-      comercial_activity: [''],
+      comercial_activity: null,
       count_comercial_activity: [''],
-      food_service: [''],
+      food_service: null,
       seating_number: [''],
       food_units_prom:[''],
       food_dishes_all: [''],
@@ -189,15 +189,14 @@ export class AlimentacionPage {
     
   }
 
-  public save(e)
+  public save()
   {
-    //let nombre = this.alimentacion.value.nombre;
-    //console.log( nombre );
-    //this.alojamiento.A0 = this.A0;
+    
      if(this.validations.validate(this.container))
      {
+       
        var flag=this.saveForm.save(
-         this.alimentacion,
+         this.alimentacion.value,
          this.appConfig.form5.number,
          this.appConfig.form5.name);
        if(flag)
