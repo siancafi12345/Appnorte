@@ -19,16 +19,26 @@
         <ion-label class="titulo">  </ion-label> 
         <ion-label class="titulo">  </ion-label> 
         <ion-label class="titulo"> Parte A. Datos del establecimiento </ion-label> 
+    
+
     <ion-item>
-    <ion-item>
-        <ion-icon name="person" item-start></ion-icon>
-        <ion-input [(ngModel)]="transporte1.nombre" type="text" placeholder="Nombre" disabledclass="no_border"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-icon name="calendar" item-start></ion-icon>
-        <ion-input [(ngModel)]="transporte1.fechaencuesta" type="text" placeholder="Fecha elaboración de la encuenta" disabled class="no_border"></ion-input>
-    </ion-item>      
-    </ion-item>
+            <ion-label>
+                Fecha elaboración de la encuesta:
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="calendar" item-start></ion-icon>
+            <ion-input name="dateStart" [(ngModel)]="dateStart" type="text" placeholder="Fecha elaboración de la encuenta" disabled class="no_border"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                Encuestador:
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="person" item-start></ion-icon>
+            <ion-input type="text" placeholder="Nombre" disabled class="no_border" name="A0" [(ngModel)]="transporte.A0"></ion-input>
+        </ion-item>   
     <ion-item>
       <ion-label floating>Nombre del establecimiento: </ion-label>
       <ion-input [(ngModel)]="transporte.name" class="requiredSelect"></ion-input>

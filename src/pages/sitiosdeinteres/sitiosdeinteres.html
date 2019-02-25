@@ -4,6 +4,7 @@
    See http://ionicframework.com/docs/components/#navigation for more info on
    Ionic pages and navigation.
    -->
+<div #container class="scroll">   
 <ion-header>
    <ion-navbar>
       <button ion-button menuToggle>
@@ -12,8 +13,9 @@
       <ion-title>Agencias operadoras</ion-title>
    </ion-navbar>
 </ion-header>
+
 <ion-content padding>
-   <form [formGroup]="sitios" (ngSubmit)="logForm()">
+   <form [formGroup]="sitios" (ngSubmit)="save($event)">
       
       <ion-item>
          <ion-note item-start>
@@ -43,7 +45,7 @@
         </ion-item>
         <ion-item>
             <ion-label floating>Nombre del establecimiento: </ion-label>
-            <ion-input formControlName="name" class="requiredSelect"></ion-input>
+            <ion-input formControlName="name" required></ion-input>
         </ion-item>
         <ion-item>
             <ion-label stacked class="titulo"> Año de fundación </ion-label>
@@ -51,7 +53,7 @@
         </ion-item>
         <ion-item>
             <ion-label stacked class="titulo"> Municipio </ion-label>
-            <ion-select formControlName="municipality_id" placeholder="Seleccionar" class="requiredSelect">
+            <ion-select formControlName="municipality_id" placeholder="Seleccionar" required>
                 <ion-option value="781">ÁBREGO</ion-option>
                 <ion-option value="782">ARBOLEDAS</ion-option>
                 <ion-option value="783">BOCHALEMA</ion-option>
@@ -104,7 +106,7 @@
         </ion-item>
         <ion-item>
             <ion-label stacked class="titulo"> Cargo</ion-label>
-            <ion-select formControlName="position_id"  placeholder="Seleccionar" class="requiredSelect">
+            <ion-select formControlName="position_id"  placeholder="Seleccionar" required>
                 <ion-option value="9253">Abogado</ion-option>
                 <ion-option value="3413">Agente de viajes</ion-option>
                 <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>
@@ -192,7 +194,7 @@
         </ion-item>
         <ion-item>
             <ion-label stacked class="titulo"> ¿Cuáles actividades deportivas ofrece la empresa?</ion-label>
-            <ion-select formControlName="sport_activities"  placeholder="Seleccionar" multiple="true" class="requiredSelect" (ionChange)="actividades()">
+            <ion-select formControlName="sport_activities"  placeholder="Seleccionar" multiple="true" required (ionChange)="actividades()">
                 <ion-option value="191">Bungee Jumping</ion-option>
                 <ion-option value="190">Escalada en roca</ion-option>
                 <ion-option value="186">Espelelismo (Exploración recreativa de cuevas)</ion-option>
@@ -269,30 +271,13 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-      
-     
-     
-   
-
+        
        <ion-list>
            <ion-item class="botones">
-               <button ion-button type="submit" [disabled]="sitios.valid">Enviar </button>
+               
+               <button ion-button ion-button color="primary" [disabled]="sitios.value.name == null && sitios.value.municipality_id == null && sitios.value.position_id == null && sitios.value.sport_activities == null">Enviar </button>
            </ion-item>
        </ion-list>
    </form>
 </ion-content>
+</div>

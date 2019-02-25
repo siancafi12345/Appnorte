@@ -7,6 +7,7 @@ import { AppConfigurations } from "../../app/app.configuration";
 import { TranporteModel } from '../../model/transporte/transporte.model';
 import { AppSaveForm } from '../../services/app.save.form.service';
 import { AppValidations } from '../../app/app.validations';
+import * as moment from 'moment';
 /**
  * Generated class for the TransportePage page.
  *
@@ -19,13 +20,24 @@ import { AppValidations } from '../../app/app.validations';
   templateUrl: 'transporte.html',
 })
 export class TransportePage {
+  public dateStart:string= "" ;
   private transporte1 : FormGroup;
   public mainNameApp: string;
   private appConfig:AppConfigurations;
+
+  private dateTime():string  {
+    const dateTime = new Date();
+    var a = dateTime.toString();
+    var res = a.slice(15, 25);
+    console.log(res);
+    return res
+    
+  }
   @ViewChild("container") container: ElementRef;
   public transporte : TranporteModel;
 
   constructor( 
+    
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     private nav: NavController,
@@ -38,10 +50,13 @@ export class TransportePage {
     
     
     ) {
+    this.dateStart = this.dateTime();
     this.appConfig=new AppConfigurations();
     this.mainNameApp=this.appConfig.mainNameApp;
     this.transporte =new TranporteModel();
-
+    var now = moment();
+    this.transporte.A0=this.storageService.user.data.user.fullname;
+    this.transporte.datesurvey_start = moment(now.format(), moment.ISO_8601).format();
     this.transporte1 = this.formBuilder.group({
       nombre: [this.storageService.user.data.user.fullname],
       fechaencuesta: [this.dateTime()],
@@ -53,13 +68,14 @@ export class TransportePage {
     
   }
   
-  private dateTime(): string {
-    const dateTime = new Date();
-    return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();
-  }
+  // private dateTime(): string {
+  //   const dateTime = new Date();
+  //   return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();
+  // }
   logForm(){
     console.log(this.transporte1.value)
   }
+
 
   public save()
   {
