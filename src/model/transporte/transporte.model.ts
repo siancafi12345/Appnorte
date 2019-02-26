@@ -5,6 +5,10 @@ import { EmailValidator } from "@angular/forms";
 
 export class TranporteModel {
     public name:string='';
+    public A0:string='';
+    public datesurvey_start:string='';
+
+
     public date_year:number;
     public municipality_id:number;
     public position_id:string='';
