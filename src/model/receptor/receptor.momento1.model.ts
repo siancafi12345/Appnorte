@@ -20,6 +20,7 @@ export class ReceptorMomento1Model {
     public city_id:string='';
     public trip_motives:string[]=[];
     public timestop:string='';
+    public transit_cause:string='';
     public health_id:string='';
     public othermotives:string='';
     public whereborn_id:string='';

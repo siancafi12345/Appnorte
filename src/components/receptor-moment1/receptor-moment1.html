@@ -255,6 +255,10 @@
       <ion-label class="titulo" stacked>¿Cuántas horas durará/duró la parada más larga en {{mainNameApp}}?</ion-label>
       <ion-input (ionBlur)="validateMomento2()" type="text" placeholder="" name="timestop" [(ngModel)]="momento1.timestop" class="requiredInput"></ion-input>
     </ion-item>
+    <ion-item *ngIf="flagtimestop">
+      <ion-label class="titulo" stacked>¿Cuál es la causa de su tránsito?</ion-label>
+      <ion-input  type="text" placeholder="" name="timestop" [(ngModel)]="momento1.transit_cause " class="requiredInput"></ion-input>
+    </ion-item>
     <ion-item *ngIf="flaghealth_id">
       <ion-label class="titulo" stacked>La finalidad del servicio medico es:</ion-label>
       <ion-select [(ngModel)]="momento1.health_id" name="health_id" class="requiredSelect">
