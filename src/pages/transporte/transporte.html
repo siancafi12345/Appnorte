@@ -161,11 +161,11 @@
       </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>Ext.</ion-label>
-        <ion-input  [(ngModel)]="transporte.phone_ext"  class="requiredInput" type="number" max="5" placeholder="" class="requiredSelect"></ion-input>
+        <ion-input  [(ngModel)]="transporte.phone_ext"  class="requiredInput" type="number" max="5" placeholder="" ></ion-input>
     </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>Celular</ion-label>
-        <ion-input [(ngModel)]="transporte.cell_phone" class="requiredInput" type="number" max="5" placeholder="" (ionChange)="telefono(10)"></ion-input>
+        <ion-input [(ngModel)]="transporte.cell_phone" class="requiredInput" type="number" max="5" placeholder="" (ionChange)="celular(10)"></ion-input>
     </ion-item>
     <ion-item  *ngIf="celular_v">
         <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido</ion-label>

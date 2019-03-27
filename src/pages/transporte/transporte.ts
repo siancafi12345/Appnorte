@@ -96,9 +96,9 @@ telefono(a){
 celular(a){
   
   if(a = 11){
-    var celular = this.transporte.phone_number;
+    var celular = this.transporte.cell_phone;
     if(celular < 1 || celular > 10000000000){
-      this.transporte.phone_number = 0;
+      this.transporte.cell_phone = 0;
       this.celular_v = true;
     }else{
       this.celular_v = false;
