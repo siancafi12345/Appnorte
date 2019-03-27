@@ -33,6 +33,8 @@ export class TransportePage {
     return res
     
   }
+  telefono_v:boolean = false;
+  celular_v:boolean = false;
   @ViewChild("container") container: ElementRef;
   public transporte : TranporteModel;
 
@@ -75,6 +77,36 @@ export class TransportePage {
   logForm(){
     console.log(this.transporte1.value)
   }
+telefono(a){
+  
+
+  if(a = 7){
+    var telefono = this.transporte.phone_number;
+    if(telefono < 1 || telefono > 10000000){
+      this.transporte.phone_number = 0;
+      this.telefono_v = true;
+    }else{
+      this.telefono_v = false;
+
+    }
+  }
+  
+}
+
+celular(a){
+  
+  if(a = 11){
+    var celular = this.transporte.phone_number;
+    if(celular < 1 || celular > 10000000000){
+      this.transporte.phone_number = 0;
+      this.celular_v = true;
+    }else{
+      this.celular_v = false;
+
+    }
+  }
+}
+
 
 
   public save()

@@ -158,16 +158,10 @@ export class SitiosdeinteresPage {
     if(this.sitios.value.comercial_activity == "1"){
       this.comercial1= true;
     }else{
-      this.sitios.reset({count_comercial_activity:""});
-      this.sitios.reset({count_people_services:""});
-
-      this.sitios.reset({percentage_people_national:""});
-      this.sitios.reset({percentage_people_foreign:""});
-      this.sitios.reset({percentage_people_local:""});
-
-      
-      
+     
+      this.sitios.value.comercial_activity = "0"
       this.comercial1= false;
+      
 
     }
   }

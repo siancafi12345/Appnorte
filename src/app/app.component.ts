@@ -51,7 +51,7 @@ export class MyApp {
       { title: 'Empleo', component: EmpleoPage, icon: 'briefcase' },
       { title: 'Emisor', component: EmisorPage, icon: 'megaphone' },
       { title: 'Alimentacion', component: AlimentacionPage, icon: 'restaurant' },
-      { title: 'Transporte', component: TransportePage, icon: 'bus' },
+      { title: 'Transporte especial', component: TransportePage, icon: 'bus' },
       { title: 'Receptor', component: ReceptorPage, icon: 'call' },
       { title: 'Sincronización', component: SincronizacionPage, icon: 'sync' }
     ]

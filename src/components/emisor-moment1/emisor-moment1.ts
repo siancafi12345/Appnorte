@@ -3,6 +3,7 @@ import { StorageService } from "../../core/services/storage.service";
 import { Moment1Model } from "../../model/moment1.model";
 import { Moment1PersonModel } from "../../model/moment1Person.model";
 import { EventEmiterService } from '../../services/app.event.emitter.service';
+
 import { AppValidations } from '../../app/app.validations';
 import { AlertController } from 'ionic-angular';
 /**
@@ -15,6 +16,7 @@ import { AlertController } from 'ionic-angular';
   selector: 'emisor-moment1',
   templateUrl: 'emisor-moment1.html'
 })
+
 export class EmisorMoment1Component {
   public flagMomento2:boolean=false;
   public moment1 : Moment1Model=new Moment1Model();
@@ -24,7 +26,8 @@ export class EmisorMoment1Component {
   constructor(private validations:AppValidations,
     private alertCtrl: AlertController,private storageService: StorageService,private _eventEmiter:EventEmiterService) {
     this.moment1.interviewer=this.storageService.user.data.user.fullname;
-    this.moment1.date=this.dateTime();
+    this.moment1.datesurvey_start=this.dateTime();
+    
     this.moment1.lMoment1PersonModel=[];
   }
 
@@ -103,6 +106,8 @@ export class EmisorMoment1Component {
   {
     if(this.validations.validate(this.container))
     {
+    this.moment1.datesurvey_end=this.dateTime();
+
       this._eventEmiter.sendEmisorSave(true);
     }
     else
@@ -175,6 +180,21 @@ export class EmisorMoment1Component {
       this._eventEmiter.sendNewMomentPerson(lPersons);
       this._eventEmiter.sendEmisorMomento1(false);
       this._eventEmiter.sendEmisorMomento2(true);
+    }
+
+    telefono(){
+      
+        var element = document.getElementById("celular");
+        element.classList.remove("requiredInput");
+        document.getElementById("celular").style.backgroundColor="white";
+      
+    }
+    celular(){
+      
+        var element = document.getElementById("telefono");
+        element.classList.remove("requiredInput");
+        document.getElementById("telefono").style.backgroundColor="white";
+      
     }
     
    

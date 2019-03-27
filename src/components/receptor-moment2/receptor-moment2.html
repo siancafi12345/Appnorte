@@ -454,8 +454,9 @@
         <ion-label class="titulo" stacked>¿Cuántas personas incluyéndose usted, realizaron juntos el viaje desde la llegada hasta la salida de {{mainNameApp}}?</ion-label>
         <ion-input  type="number" (keyup)="numeropersonas()" placeholder="" min="1" name="howmanypeople_travel" [(ngModel)]="momento2.howmanypeople_travel" class="requiredSelect"></ion-input>
       </ion-item>
+      
       <ion-item *ngIf="numerop">
-        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido debe ser menor a {{total}}</ion-label>
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no debe ser mayor al total de personas mencionada en la hoja de registro</ion-label>
       </ion-item> 
       <ion-item >
         <ion-label class="titulo" stacked>Las personas anteriormente mencionadas son:</ion-label>

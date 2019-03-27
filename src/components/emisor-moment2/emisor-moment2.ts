@@ -1,5 +1,6 @@
 import { Component, ViewChild, Input, ElementRef } from '@angular/core';
 import { Moment2Model } from "../../model/moment2.model";
+
 import { TripModel } from "../../model/trip.model";
 import { DestinationModel } from "../../model/destination.model";
 import { AppService } from '../../services/app.service';
@@ -163,12 +164,12 @@ export class EmisorMoment2Component {
 
   public onChangeDept(num,event,destination)
   {
-    console.log('Codigo de pais'+event);
+    
     if(event==="54")
     {
       this.insideAntioquia=true;
       this.showActivitiesAntioquiaSelect=true;
-      console.log('Dentro de Nortee');
+      
     }
     if(event!=="54")
     {
@@ -191,13 +192,28 @@ export class EmisorMoment2Component {
     let name=this.cities[num].find(x => parseInt(x.id) == parseInt(event)).name;
     destination.cityName=name;
   }
-
-  public isMainDestination(event,destination,trip)
+  si:boolean = false;
+  public isMainDestination(event,destination,trip,a,i)
   {
+    var b = a+1;
+    var element = document.getElementById("viaje_"+b);
+    var total_hijos = element.children[0].childElementCount;
+
+   
+ 
+    for(let j = 4;j+8 <= total_hijos; j++){
+      let c = j-4; 
+        this.moment2.lTrips[a]['lDestination'][c]['mainDestination'] = "no";
+     }
+     if(event=="si"){
+        this.moment2.lTrips[a]['lDestination'][i]['mainDestination'] = "si";
+     }
+     console.log(this.moment2.lTrips[0]['lDestination']);
+    
     if(event=="si")
     {
       this.mainNameDestination=destination;
-      destination.mainDestiny="si";
+      //destination.mainDestiny="si";
       if(trip.totalnights>0)
       {
         this.flagNightDay=true;
@@ -837,7 +853,7 @@ export class EmisorMoment2Component {
     let valor1 = parseInt(this.moment2.sport_in)
     let valor2 = parseInt(this.moment2.sport_out);
     let total = valor1+valor2;
-    console.log(total);
+    
     if(total > 100){
       this.valueproductsPlan = true;
     } else {
@@ -848,7 +864,7 @@ export class EmisorMoment2Component {
     let valor1 = parseInt(this.moment2.rcd_in)
     let valor2 = parseInt(this.moment2.rcd_out);
     let total = valor1+valor2;
-    console.log(total);
+    
     if(total > 100){
       this.valueproductsPlan12 = true;
     } else {
@@ -861,7 +877,7 @@ export class EmisorMoment2Component {
     let valor1 = parseInt(this.moment2.conferences_in)
     let valor2 = parseInt(this.moment2.conferences_out);
     let total = valor1+valor2;
-    console.log(total);
+    
     if(total > 100){
       this.valueproductsPlan2 = true;
     } else {
@@ -873,7 +889,7 @@ export class EmisorMoment2Component {
     let valor1 = parseInt(this.moment2.courses_in)
     let valor2 = parseInt(this.moment2.courses_out);
     let total = valor1+valor2;
-    console.log(total);
+    
     if(total > 100){
       this.valueproductsPlan3 = true;
     } else {
@@ -985,7 +1001,7 @@ export class EmisorMoment2Component {
      }
      if(this.moment2.packservices_id.indexOf("240")>=0 && this.insideOusideAntioquia)
      {
-       console.log("soisisisisis");
+      
 
        this.productsPlanCTu=true;
 
@@ -1028,7 +1044,7 @@ export class EmisorMoment2Component {
    }
 
   public acordeon($event,id) {
-    console.log("Click",id);
+    
     let a = document.getElementsByClassName("acordeonMomento")[id];
     a.classList.toggle("showContent");
   }

@@ -3,7 +3,9 @@ import { Moment1PersonModel } from "./moment1Person.model";
 
 export class Moment1Model {
   public interviewer:string;
-  public date:string;
+  public datesurvey_start:string;
+  public datesurvey_end:string;
+
   public ch:string;
   public en:string;
   public place_id:string;

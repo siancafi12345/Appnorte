@@ -17,8 +17,9 @@
     </ion-item>
     <ion-item>
       <ion-icon name="calendar" item-start></ion-icon>
-      <ion-input type="text" placeholder="Fecha elaboración de la encuesta" name="date" [(ngModel)]="moment1.date" disabled class="no_border"></ion-input>
+      <ion-input type="text" placeholder="Fecha elaboración de la encuesta" name="datesurvey_start" [(ngModel)]="moment1.datesurvey_start" disabled class="no_border"></ion-input>
     </ion-item>
+
     <ion-item>
       <ion-select placeholder="Lugar de la encuesta" name="place_id" [(ngModel)]="moment1.place_id" class="requiredSelect">
         <ion-label>Seleccione</ion-label>
@@ -79,21 +80,22 @@
         <ion-col width-100>
           <ion-item no-padding no-lines>
             <ion-label stacked>Nombre de la persona entrevistada</ion-label>
-            <ion-input class="requiredInput" type="text" name="interview_person" [(ngModel)]="moment1.interview_person"></ion-input>
+            <ion-input class="requiredInput" type="text" name="interview_person" [(ngModel)]="moment1.interview_person"></ion-input> 
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
+
           <ion-item no-margin no-padding no-lines>
             <ion-label stacked>Teléfono fijo</ion-label>
-            <ion-input class="requiredInput" type="number" name="phone" [(ngModel)]="moment1.phone"></ion-input>
+            <ion-input class="requiredInput" type="number" id="telefono" name="phone" (keyup)="telefono()" [(ngModel)]="moment1.phone"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item no-margin no-padding no-lines>
             <ion-label stacked>Celular</ion-label>
-            <ion-input class="requiredInput" type="number" name="cellphone" [(ngModel)]="moment1.cellphone"></ion-input>
+            <ion-input class="requiredInput" id="celular" type="number" (keyup)="celular()" name="cellphone" [(ngModel)]="moment1.cellphone"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -394,7 +396,7 @@
   <div text-center>
     <!-- <button *ngIf="flagMomento2" (click)="save()" ion-button color="primary">Guardar</button> -->
     <button  (click)="next()" ion-button color="primary">Siguiente</button>
-    <!-- <button  (click)="text()" ion-button color="primary">text</button> -->
+    <!-- <button  (click)="text()" ion-button color="primary">text</button>  -->
   </div>
 </div>
 </div>

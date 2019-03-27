@@ -2,6 +2,7 @@ import { TripModel } from "./trip.model";
 import { NightModel } from "./night.model";
 import { HowMuchCostTripPackageModel } from "./howMuchCostTripPackage.model";
 
+
 export class Moment2Model {
   public trips:number;
   public lTrips:TripModel[];

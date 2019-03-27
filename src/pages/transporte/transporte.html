@@ -4,7 +4,7 @@
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Encuesta transporte de viajes</ion-title>
+        <ion-title>Transporte especial</ion-title>
       </ion-navbar>
     </ion-header>
 
@@ -94,7 +94,7 @@
     </ion-item>
     <ion-item>
         <ion-label floating>Dirección </ion-label>
-        <ion-input [(ngModel)]="transporte.address"></ion-input>
+        <ion-input [(ngModel)]="transporte.address" class="requiredSelect"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label floating>Nombre del contacto </ion-label>
@@ -154,16 +154,22 @@
     </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>Telefono</ion-label>
-        <ion-input [(ngModel)]="transporte.phone_number" class="requiredInput" type="number" max="5" placeholder="" class="requiredSelect"></ion-input>
+        <ion-input [(ngModel)]="transporte.phone_number" class="requiredInput" type="number" max="5" placeholder="" class="requiredSelect" (ionChange)="telefono(7)" ></ion-input>
     </ion-item>
+    <ion-item *ngIf="telefono_v">
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido</ion-label>
+      </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>Ext.</ion-label>
         <ion-input  [(ngModel)]="transporte.phone_ext"  class="requiredInput" type="number" max="5" placeholder="" class="requiredSelect"></ion-input>
     </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>Celular</ion-label>
-        <ion-input [(ngModel)]="transporte.cell_phone" class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+        <ion-input [(ngModel)]="transporte.cell_phone" class="requiredInput" type="number" max="5" placeholder="" (ionChange)="telefono(10)"></ion-input>
     </ion-item>
+    <ion-item  *ngIf="celular_v">
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El numero no es valido</ion-label>
+      </ion-item>
     <ion-item >
         <ion-label class="titulo" stacked>E-mail</ion-label>
         <ion-input [(ngModel)]="transporte.email" class="requiredInput" type="email" max="5" placeholder=""></ion-input>

@@ -56,6 +56,7 @@ export class ReceptorMoment1Component {
     this.appConfig=new AppConfigurations();
     this.mainNameApp=this.appConfig.mainNameApp;
     this.momento1.A0=this.storageService.user.data.user.fullname;
+    
     this.momento1.dateStart=this.dateTime();
     this._service.getService('cities.json').subscribe(
       (response) => {  
@@ -72,7 +73,9 @@ linpiar(){
     this.linpiar();
     const dateTime = new Date();
     
-    return dateTime.toLocaleTimeString();
+    return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();
+
+    //return dateTime.toLocaleTimeString();
   }
 
   public paso2()

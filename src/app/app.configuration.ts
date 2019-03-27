@@ -6,7 +6,6 @@ export class AppConfigurations {
   public form3={'name':'transporte','number':3};
   public form4={'name':'sitiosdeinteres','number':4};
   public form5={'name':'alimentacion','number':5};
-  
   public form7={'name':'empleo','number':7};
   public form6={'name':'agencia','number':6};
   public form8={'name':'alojamiento','number':8};

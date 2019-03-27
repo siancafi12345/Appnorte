@@ -2,7 +2,6 @@
     <ion-list>
         <button ion-item color="cards">
             Momento 2
-            
         </button>
     </ion-list>
 </ion-card>
@@ -46,7 +45,7 @@
     </div>
 
     <div class="emisorMoment2">
-        <div *ngFor="let trip of moment2.lTrips; let a =  index;">
+        <div *ngFor="let trip of moment2.lTrips; let a =  index;" id="viaje_{{ a+1 }}" >
             <ion-list>
                 <ion-item-divider>
                     Viaje {{ a+1 }}
@@ -60,9 +59,9 @@
                     <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="trip.trip_finish" (ionChange)="calculateNight(trip)"></ion-datetime>
                 </ion-item>
                 <ion-item>
-                    <ion-label class="titulo">¿Qué destinos incluyo el primer viaje realizado?</ion-label>
+                    <ion-label class="titulo">¿Qué destinos incluyo el {{ a+1 }} viaje realizado?</ion-label>
                 </ion-item>
-                <div *ngFor="let destination of trip.lDestination;let i = index">
+                <div *ngFor="let destination of trip.lDestination;let i = index" id="distin_{{i}}">
                     <ion-item-divider>
                         Destino {{ i+1 }}
                     </ion-item-divider>
@@ -88,8 +87,8 @@
                     <ion-item-divider>
                         Destino principal
                     </ion-item-divider>
-                    <ion-item>
-                        <ion-select class="requiredSelect" placeholder="Seleccionar" (ionChange)="isMainDestination($event,destination,trip)" [(ngModel)]="destination.mainDestination">
+                    <ion-item id="destino_{{i}}">
+                        <ion-select class="requiredSelect principal"   placeholder="Seleccionar" (ionChange)="isMainDestination($event,destination,trip,a,i)" [(ngModel)]="destination.mainDestination">
                            
                             <ion-option value="si">Si</ion-option>
                             <ion-option value="no">No</ion-option>
