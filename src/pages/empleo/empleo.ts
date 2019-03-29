@@ -4,6 +4,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppSaveForm } from '../../services/app.save.form.service';
 import { EmpleoModel } from '../../model/empleo/empleo.model';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { StorageService } from "../../core/services/storage.service";
+
 
 /**
  * Generated class for the EmpleoPage page.
@@ -19,8 +21,11 @@ import { NavController, NavParams, AlertController, ToastController } from 'ioni
 export class EmpleoPage {
   public mainNameApp: string;
   private appConfig:AppConfigurations;
+  public empleo : EmpleoModel=new EmpleoModel();
   @ViewChild("container") container: ElementRef;
-  public empleo : EmpleoModel;
+ 
+
+  
 
   constructor(
     
@@ -29,19 +34,27 @@ export class EmpleoPage {
     private saveForm:AppSaveForm,
     private toastCtrl: ToastController,
     private alertCtrl: AlertController,
-
+    private storageService: StorageService,
     public navParams: NavParams
     
     ) {
+    this.empleo.dateStart = this.dateTime();
+    this.empleo.A0 = this.storageService.user.data.user.fullname;
     this.appConfig=new AppConfigurations();
     this.mainNameApp=this.appConfig.mainNameApp;
   }
 
-
+ 
   ionViewDidLoad() {
+    
     console.log('ionViewDidLoad EmpleoPage');
   }
+  private dateTime(): string {
+    const dateTime = new Date();
+    return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();
+  }
 
+ 
   public save()
   {
     if(this.validations.validate(this.container))
