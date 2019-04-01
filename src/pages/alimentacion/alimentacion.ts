@@ -58,7 +58,7 @@ export class AlimentacionPage {
       foot_category:null,
       foot_category_other:[''],
       municipality_id:null,
-      address:[''],
+      address:null,
       contact:[''],
       position_id:null,
       other_position:[''],

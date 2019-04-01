@@ -52,11 +52,11 @@
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Número de empleados en año anterior:</ion-label>
-    <ion-input type="number" placeholder="" [(ngModel)]="empleo.amount_employees" class="requiredInput"></ion-input>
+    <ion-input type="number" placeholder="" [(ngModel)]="empleo.amount_employees" (ionBlur)="empleados()" class="requiredInput"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Nombre del contacto:</ion-label>
-    <ion-input type="number" placeholder="" class="requiredInput"  [(ngModel)]="empleo.contact_name" ></ion-input>
+    <ion-input type="text" placeholder="" class="requiredInput"  [(ngModel)]="empleo.contact_name" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Cargo</ion-label>
@@ -130,73 +130,79 @@
   </ion-item> 
 </div>
 
-  <!-- EMPLEO -->
-  <!-- <ion-item>
-
+<div class="empleados" *ngFor="let E5 of empleo.employees; let i = index"> 
+    <ion-label class="titulo">Empleado # {{i+1}}</ion-label>
+  <ion-item>
     <ion-label class="titulo" stacked>Cargo</ion-label>
-    <ion-select class="requiredSelect">
-      <ion-label>Cargo:</ion-label>
-      <ion-option value="9253">Abogado</ion-option>
-      <ion-option value="3413">Agente de viajes</ion-option>
-      <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>
-      <ion-option value="9221">Aseador</ion-option>
-      <ion-option value="3431">Asistente de servicios administrativos </ion-option>
-      <ion-option value="3475">Atletas, deportistas y afines</ion-option>
-      <ion-option value="4123">Auxiliar administrativo </ion-option>
-      <ion-option value="4121">Auxiliar de contabilidad </ion-option>
-      <ion-option value="4211">Cajero</ion-option>
-      <ion-option value="5125">Camarera(o)</ion-option>
-      <ion-option value="5124">Capitán de meseros-Hostess</ion-option>
-      <ion-option value="5123">Chef</ion-option>
-      <ion-option value="5121">Cocinero</ion-option>
-      <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>
-      <ion-option value="2411">Contador</ion-option>
-      <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>
-      <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>
-      <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>
-      <ion-option value="1315">Director de operación</ion-option>
-      <ion-option value="1322">Director de talento humano </ion-option>
-      <ion-option value="1323">Director de ventas y/o comercialización</ion-option>
-      <ion-option value="1321">Director financiero y/o administrativo</ion-option>
-      <ion-option value="1211">Director o Gerente general</ion-option>
-      <ion-option value="1212">Director regional, sucursal, oficina</ion-option>
-      <ion-option value="9254">Diseñador y Publicista</ion-option>
-      <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>
-      <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>
-      <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>
-      <ion-option value="5113">Guía</ion-option>
-      <ion-option value="9222">Lavanderos y planchadores</ion-option>
-      <ion-option value="9255">Medicos y afines</ion-option>
-      <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>
-      <ion-option value="5122">Mesero-Barman </ion-option>
-      <ion-option value="9132">Porteros, conserjes y afines</ion-option>
-      <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>
-      <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>
-      <ion-option value="9256">Revisor Fiscal</ion-option>
-      <ion-option value="4113">Secretaria(o)</ion-option>
-      <ion-option value="1426">Supervisor de operaciones</ion-option>
-      <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>
-      <ion-option value="3122">Técnico en programación informática</ion-option>
-  </ion-select>
-</ion-item>
-<ion-item>
-      <ion-label class="titulo" stacked>Género</ion-label>
-      <ion-select class="requiredSelect">
-        <ion-option value="9412">Femenino</ion-option>
-        <ion-option value="9413">Masculino</ion-option>
-      </ion-select>
-</ion-item>
-    <ion-item>
+    
+    <ion-select class="requiredSelect"   [(ngModel)]="empleo.employees[i].charge_id">
+        <ion-option value="">  </ion-option>                                   
+        <ion-option value="9253">Abogado</ion-option>                                   
+        <ion-option value="3413">Agente de viajes</ion-option>                                   
+        <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>                                   
+        <ion-option value="9221">Aseador</ion-option>                                   
+        <ion-option value="3431">Asistente de servicios administrativos </ion-option>                                   
+        <ion-option value="3475">Atletas, deportistas y afines</ion-option>                                   
+        <ion-option value="4123">Auxiliar administrativo </ion-option>                                   
+        <ion-option value="4121">Auxiliar de contabilidad </ion-option>                                   
+        <ion-option value="4211">Cajero</ion-option>                                   
+        <ion-option value="5125">Camarera(o)</ion-option>                                   
+        <ion-option value="5124">Capitán de meseros-Hostess</ion-option>                                   
+        <ion-option value="5123">Chef</ion-option>                                   
+        <ion-option value="5121">Cocinero</ion-option>                                   
+        <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>           
+        <ion-option value="2411">Contador</ion-option>                                   
+        <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>                                   
+        <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>                                  
+        <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>                                   
+        <ion-option value="1315">Director de operación</ion-option>                                   
+        <ion-option value="1322">Director de talento humano </ion-option>                                   
+        <ion-option value="1323">Director de ventas y/o comercialización</ion-option>                                   
+        <ion-option value="1321">Director financiero y/o administrativo</ion-option>                                   
+        <ion-option value="1211">Director o Gerente general</ion-option>                                   
+        <ion-option value="1212">Director regional, sucursal, oficina</ion-option>                                   
+        <ion-option value="9254">Diseñador y Publicista</ion-option>                                   
+        <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>                                   
+        <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>                                   
+        <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>                                   
+        <ion-option value="5113">Guía</ion-option>                                   
+        <ion-option value="9222">Lavanderos y planchadores</ion-option>                                   
+        <ion-option value="9255">Medicos y afines</ion-option>                                   
+        <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>                                   
+        <ion-option value="5122">Mesero-Barman </ion-option>                                   
+        <ion-option value="9132">Porteros, conserjes y afines</ion-option>                                   
+        <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>                                   
+        <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>                                   
+        <ion-option value="9256">Revisor Fiscal</ion-option>                                   
+        <ion-option value="4113">Secretaria(o)</ion-option>                                   
+        <ion-option value="1426">Supervisor de operaciones</ion-option>                                   
+        <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>                                   
+        <ion-option value="3122">Técnico en programación informática</ion-option>                                                           
+        <ion-option value="9133">Vigilantes y celadores</ion-option>                                   
+        <ion-option value="40">Otro</ion-option>                                   
+    </ion-select>
+  </ion-item>
+  <ion-item> 
+    <ion-label class="titulo" stacked>Género</ion-label>
+        <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].sex_id">
+          <ion-option value="9412">Femenino</ion-option>
+          <ion-option value="9413">Masculino</ion-option>
+        </ion-select>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Edad</ion-label>
-      <ion-input type="number" placeholder="AÑOS" name="A7" min="15" class="requiredInput"></ion-input>
-    </ion-item>
-    <ion-item>
+      <ion-input type="number" placeholder="AÑOS" name="A7" min="15" class="requiredInput" [(ngModel)]="empleo.employees[i].age"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="empleo.employees[i].age < 16">
+      <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El Ingrese un valor mayor o igual a 16.</ion-label>
+  </ion-item> 
+  <ion-item>
       <ion-label class="titulo" stacked>Lugar de residencia</ion-label>
-      <ion-input type="text" placeholder="" class="requiredInput"></ion-input>
-    </ion-item>
-    <ion-item>
+      <ion-input  placeholder="" class="requiredInput" name="employees" [(ngModel)]="empleo.employees[i].place_residence"></ion-input>
+  </ion-item> 
+  <ion-item>
       <ion-label class="titulo" stacked>Máximo nivel Educativo</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].educational_degree">
         <ion-option value="566">Ninguno</ion-option>
         <ion-option value="568">Bachillerato</ion-option>
         <ion-option value="569">Técnico</ion-option>
@@ -204,80 +210,389 @@
         <ion-option value="571">Universitario</ion-option>
         <ion-option value="572">Posgrado</ion-option>
       </ion-select>
-    </ion-item>
-    <ion-item>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Dominio de inglés</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].english_proficiency">
         <ion-option value="0">No</ion-option>
         <ion-option value="1">Si</ion-option>
       </ion-select>
-    </ion-item>
-    <ion-item>
+  </ion-item> 
+  <ion-item>
       <ion-label class="titulo" stacked>Tipo de contrato</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].contract_type">
         <ion-option value="537">Aprendices y Pasantes</ion-option>
         <ion-option value="534">Empleados Permanentes</ion-option>
         <ion-option value="535">Empleados Temporales Directos</ion-option>
         <ion-option value="536">Empleados Temporales por Agencia</ion-option>
       </ion-select>
-    </ion-item>
-
-    <ion-item>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Propietario/socio/familiar</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select  [(ngModel)]="empleo.employees[i].owner_partner_family">
         <ion-option value="532">Propietarios, socios</ion-option>
         <ion-option value="533">Trabajador Familiar</ion-option>
-      </ion-select>
-    </ion-item>
+        <ion-option value="40">Otro</ion-option>
 
-    <ion-item>
+      </ion-select>
+  </ion-item>
+  <ion-item *ngIf="empleo.employees[i].owner_partner_family == '40'">
+      <ion-label class="titulo" stacked>Otreo cual</ion-label>
+      <ion-input  placeholder=""  name="employees" [(ngModel)]="empleo.employees[i].oterowner_partner_family"></ion-input>
+  </ion-item> 
+  <ion-item>
       <ion-label class="titulo" stacked>Jornada de trabajo</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].workday">
         <ion-option value="9271">Tiempo Completo</ion-option>
         <ion-option value="9270">Tiempo Parcial</ion-option>
       </ion-select>
-    </ion-item>
-
-    <ion-item>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Días laborados en el mes</ion-label>
-      <ion-input type="number" placeholder="" class="requiredInput"></ion-input>
-    </ion-item>
-
-    <ion-item>
+      <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.employees[i].worked_days_month"></ion-input>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Horas por día</ion-label>
-      <ion-input type="number" placeholder="" class="requiredInput"></ion-input>
-    </ion-item>
-
-    <ion-item>
+      <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.employees[i].daily_hours"></ion-input>
+  </ion-item>
+  <ion-item>
       <ion-label class="titulo" stacked>Remuneración mensual</ion-label>
-      <ion-input type="number" placeholder="$" class="requiredInput"></ion-input>
-    </ion-item>
+      <ion-input type="number" placeholder="$" [(ngModel)]="empleo.employees[i].monthly_salary"></ion-input>
+  </ion-item>
 
-    <ion-item>
+</div>
+<ion-item  *ngIf="empleo.employees.length >= 1 || empleo.amount_employees == 0">
+    <div item-content>
+      <ion-label class="titulo">Empleo</ion-label>
+      <br>
+      <p>Las preguntas a continuación buscan determinar el número de empleos y sus características del año anterior. Si hay un cargo ocupado por más de una persona, describa las características de cada cargo de manera individual. Ejemplo: Si hay dos camareras, se describen las dos camareras. Los empleos incluyen toda la fuerza laboral desde mandos altos, medios y personal operativo.</p>
+      <br>
+      
+     
+      
+    </div>
+  
+</ion-item>
+ <div class="otroempleado" *ngFor="let E5 of empleo.otro_empleo; let i = index" > 
+    <ion-label class="titulo">Empleado # {{i+1+empleo.employees.length}}</ion-label>
+   
+
+  <ion-item>
+    <ion-label class="titulo" stacked>Cargo</ion-label>
+    
+    <ion-select class="requiredSelect"   [(ngModel)]="empleo.otro_empleo[i].charge_id">
+        <ion-option value="">  </ion-option>                                   
+        <ion-option value="9253">Abogado</ion-option>                                   
+        <ion-option value="3413">Agente de viajes</ion-option>                                   
+        <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>                                   
+        <ion-option value="9221">Aseador</ion-option>                                   
+        <ion-option value="3431">Asistente de servicios administrativos </ion-option>                                   
+        <ion-option value="3475">Atletas, deportistas y afines</ion-option>                                   
+        <ion-option value="4123">Auxiliar administrativo </ion-option>                                   
+        <ion-option value="4121">Auxiliar de contabilidad </ion-option>                                   
+        <ion-option value="4211">Cajero</ion-option>                                   
+        <ion-option value="5125">Camarera(o)</ion-option>                                   
+        <ion-option value="5124">Capitán de meseros-Hostess</ion-option>                                   
+        <ion-option value="5123">Chef</ion-option>                                   
+        <ion-option value="5121">Cocinero</ion-option>                                   
+        <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>           
+        <ion-option value="2411">Contador</ion-option>                                   
+        <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>                                   
+        <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>                                  
+        <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>                                   
+        <ion-option value="1315">Director de operación</ion-option>                                   
+        <ion-option value="1322">Director de talento humano </ion-option>                                   
+        <ion-option value="1323">Director de ventas y/o comercialización</ion-option>                                   
+        <ion-option value="1321">Director financiero y/o administrativo</ion-option>                                   
+        <ion-option value="1211">Director o Gerente general</ion-option>                                   
+        <ion-option value="1212">Director regional, sucursal, oficina</ion-option>                                   
+        <ion-option value="9254">Diseñador y Publicista</ion-option>                                   
+        <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>                                   
+        <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>                                   
+        <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>                                   
+        <ion-option value="5113">Guía</ion-option>                                   
+        <ion-option value="9222">Lavanderos y planchadores</ion-option>                                   
+        <ion-option value="9255">Medicos y afines</ion-option>                                   
+        <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>                                   
+        <ion-option value="5122">Mesero-Barman </ion-option>                                   
+        <ion-option value="9132">Porteros, conserjes y afines</ion-option>                                   
+        <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>                                   
+        <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>                                   
+        <ion-option value="9256">Revisor Fiscal</ion-option>                                   
+        <ion-option value="4113">Secretaria(o)</ion-option>                                   
+        <ion-option value="1426">Supervisor de operaciones</ion-option>                                   
+        <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>                                   
+        <ion-option value="3122">Técnico en programación informática</ion-option>                                                           
+        <ion-option value="9133">Vigilantes y celadores</ion-option>                                   
+        <ion-option value="40">Otro</ion-option>                                   
+    </ion-select>
+  </ion-item>
+  <ion-item> 
+    <ion-label class="titulo" stacked>Género</ion-label>
+        <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].sex_id">
+          <ion-option value="9412">Femenino</ion-option>
+          <ion-option value="9413">Masculino</ion-option>
+        </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Edad</ion-label>
+      <ion-input type="number" placeholder="AÑOS" name="A7" min="15" class="requiredInput" [(ngModel)]="empleo.otro_empleo[i].age"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="empleo.otro_empleo[i].age < 16">
+      <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;">El Ingrese un valor mayor o igual a 16.</ion-label>
+  </ion-item> 
+  <ion-item>
+      <ion-label class="titulo" stacked>Lugar de residencia</ion-label>
+      <ion-input  placeholder="" class="requiredInput" name="otro_empleo" [(ngModel)]="empleo.otro_empleo[i].place_residence"></ion-input>
+  </ion-item> 
+  <ion-item>
+      <ion-label class="titulo" stacked>Máximo nivel Educativo</ion-label>
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].educational_degree">
+        <ion-option value="566">Ninguno</ion-option>
+        <ion-option value="568">Bachillerato</ion-option>
+        <ion-option value="569">Técnico</ion-option>
+        <ion-option value="570">Tecnólogo</ion-option>
+        <ion-option value="571">Universitario</ion-option>
+        <ion-option value="572">Posgrado</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Dominio de inglés</ion-label>
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].english_proficiency">
+        <ion-option value="0">No</ion-option>
+        <ion-option value="1">Si</ion-option>
+      </ion-select>
+  </ion-item> 
+  <ion-item>
+      <ion-label class="titulo" stacked>Tipo de contrato</ion-label>
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].contract_type">
+        <ion-option value="537">Aprendices y Pasantes</ion-option>
+        <ion-option value="534">Empleados Permanentes</ion-option>
+        <ion-option value="535">Empleados Temporales Directos</ion-option>
+        <ion-option value="536">Empleados Temporales por Agencia</ion-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Propietario/socio/familiar</ion-label>
+      <ion-select  [(ngModel)]="empleo.otro_empleo[i].owner_partner_family">
+        <ion-option value="532">Propietarios, socios</ion-option>
+        <ion-option value="533">Trabajador Familiar</ion-option>
+        <ion-option value="40">Otro</ion-option>
+
+      </ion-select>
+  </ion-item>
+  <ion-item *ngIf="empleo.otro_empleo[i].owner_partner_family == '40'">
+      <ion-label class="titulo" stacked>Otreo cual</ion-label>
+      <ion-input  placeholder=""  name="otro_empleo" [(ngModel)]="empleo.otro_empleo[i].oterowner_partner_family"></ion-input>
+  </ion-item> 
+  <ion-item>
       <ion-label class="titulo" stacked>Jornada de trabajo</ion-label>
-      <ion-select class="requiredSelect">
+      <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].workday">
         <ion-option value="9271">Tiempo Completo</ion-option>
         <ion-option value="9270">Tiempo Parcial</ion-option>
       </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Días laborados en el mes</ion-label>
+      <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.otro_empleo[i].worked_days_month"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Horas por día</ion-label>
+      <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.otro_empleo[i].daily_hours"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label class="titulo" stacked>Remuneración mensual</ion-label>
+      <ion-input type="number" placeholder="$" [(ngModel)]="empleo.otro_empleo[i].monthly_salary"></ion-input>
+  </ion-item>  
+
+</div> 
+<ion-item  *ngIf="empleo.employees.length >= 1 || empleo.amount_employees == 0">
+    <div item-content>
+     
+      <button ion-button color="Success" (click)="otroempleados()">Agregar empleado</button>
+     
+      
+    </div>
+  
+</ion-item>
+
+<div *ngIf="empleo.employees.length >= 1 || empleo.amount_employees >= 0">
+    <ion-item>
+        <div item-content>
+            <ion-label class="titulo">Vacantes</ion-label>
+            <br>
+            <p>El objetivo de conocer las vacantes que se generan en el mes es establecer el aporte del sector turismo a la generación de empleo.</p>
+            <br>
+           
+            
+        </div>
+    </ion-item> 
+    <ion-item>
+        <ion-label class="titulo" stacked>¿En el mes anterior el establecimiento generará vacantes?</ion-label>
+        <ion-select class="requiredSelect" [(ngModel)]="empleo.generatevacancies" (ionChange)="vacante()">
+          <ion-option value="si">Si</ion-option>
+          <ion-option value="no">No</ion-option>
+        </ion-select>
     </ion-item>
 
-    <ion-item>
-      <div item-content>
-        <br>
-        Vacantes
-        <br>
-        <br>
-        <p>El objetivo de conocer las vacantes que se generan en el mes es establecer el aporte del sector turismo a la generación de empleo.</p>
-      </div>
-    </ion-item>
+    <div class="vacantes" *ngIf="empleo.generatevacancies == 'si'">
+        <ion-label class="titulo">Vacante #1</ion-label>
+          <ion-item>
+            <ion-label class="titulo" stacked>Cargo</ion-label>
+            
+            <ion-select class="requiredSelect"   [(ngModel)]="empleo.vacantes[0].charge_id">
+                <ion-option value="">  </ion-option>                                   
+                <ion-option value="9253">Abogado</ion-option>                                   
+                <ion-option value="3413">Agente de viajes</ion-option>                                   
+                <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>                                   
+                <ion-option value="9221">Aseador</ion-option>                                   
+                <ion-option value="3431">Asistente de servicios administrativos </ion-option>                                   
+                <ion-option value="3475">Atletas, deportistas y afines</ion-option>                                   
+                <ion-option value="4123">Auxiliar administrativo </ion-option>                                   
+                <ion-option value="4121">Auxiliar de contabilidad </ion-option>                                   
+                <ion-option value="4211">Cajero</ion-option>                                   
+                <ion-option value="5125">Camarera(o)</ion-option>                                   
+                <ion-option value="5124">Capitán de meseros-Hostess</ion-option>                                   
+                <ion-option value="5123">Chef</ion-option>                                   
+                <ion-option value="5121">Cocinero</ion-option>                                   
+                <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>           
+                <ion-option value="2411">Contador</ion-option>                                   
+                <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>                                   
+                <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>                                  
+                <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>                                   
+                <ion-option value="1315">Director de operación</ion-option>                                   
+                <ion-option value="1322">Director de talento humano </ion-option>                                   
+                <ion-option value="1323">Director de ventas y/o comercialización</ion-option>                                   
+                <ion-option value="1321">Director financiero y/o administrativo</ion-option>                                   
+                <ion-option value="1211">Director o Gerente general</ion-option>                                   
+                <ion-option value="1212">Director regional, sucursal, oficina</ion-option>                                   
+                <ion-option value="9254">Diseñador y Publicista</ion-option>                                   
+                <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>                                   
+                <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>                                   
+                <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>                                   
+                <ion-option value="5113">Guía</ion-option>                                   
+                <ion-option value="9222">Lavanderos y planchadores</ion-option>                                   
+                <ion-option value="9255">Medicos y afines</ion-option>                                   
+                <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>                                   
+                <ion-option value="5122">Mesero-Barman </ion-option>                                   
+                <ion-option value="9132">Porteros, conserjes y afines</ion-option>                                   
+                <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>                                   
+                <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>                                   
+                <ion-option value="9256">Revisor Fiscal</ion-option>                                   
+                <ion-option value="4113">Secretaria(o)</ion-option>                                   
+                <ion-option value="1426">Supervisor de operaciones</ion-option>                                   
+                <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>                                   
+                <ion-option value="3122">Técnico en programación informática</ion-option>                                                           
+                <ion-option value="9133">Vigilantes y celadores</ion-option>                                   
+                <ion-option value="40">Otro</ion-option>                                   
+            </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label class="titulo" stacked>Numero de vacantes</ion-label>
+              <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.vacantes[0].amount_vacancies"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label class="titulo" stacked>Razon principal de la vacante</ion-label>
+              <ion-input type="text" placeholder="" class="requiredInput" [(ngModel)]="empleo.vacantes[0].reason"></ion-input>
+          </ion-item>
 
+          
+    </div>
+
+    <div class="otravacantes"  *ngFor="let E5 of empleo.otravacantes; let i = index">
+        <ion-label class="titulo">Vacante #{{i+2}}</ion-label>
+          <ion-item>
+            <ion-label class="titulo" stacked>Cargo</ion-label>
+            
+            <ion-select class="requiredSelect"   [(ngModel)]="empleo.otravacantes[i].charge_id">
+                <ion-option value="">  </ion-option>                                   
+                <ion-option value="9253">Abogado</ion-option>                                   
+                <ion-option value="3413">Agente de viajes</ion-option>                                   
+                <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>                                   
+                <ion-option value="9221">Aseador</ion-option>                                   
+                <ion-option value="3431">Asistente de servicios administrativos </ion-option>                                   
+                <ion-option value="3475">Atletas, deportistas y afines</ion-option>                                   
+                <ion-option value="4123">Auxiliar administrativo </ion-option>                                   
+                <ion-option value="4121">Auxiliar de contabilidad </ion-option>                                   
+                <ion-option value="4211">Cajero</ion-option>                                   
+                <ion-option value="5125">Camarera(o)</ion-option>                                   
+                <ion-option value="5124">Capitán de meseros-Hostess</ion-option>                                   
+                <ion-option value="5123">Chef</ion-option>                                   
+                <ion-option value="5121">Cocinero</ion-option>                                   
+                <ion-option value="8321">Conductores de camionetas y vehículos livianos</ion-option>           
+                <ion-option value="2411">Contador</ion-option>                                   
+                <ion-option value="1412">Coordinador de ventas y/o comercialización</ion-option>                                   
+                <ion-option value="1414">Coordinadores y supervisores de almacenamiento, abastecimiento y distribución</ion-option>                                  
+                <ion-option value="1411">Coordinadores y supervisores financieros y administrativos</ion-option>                                   
+                <ion-option value="1315">Director de operación</ion-option>                                   
+                <ion-option value="1322">Director de talento humano </ion-option>                                   
+                <ion-option value="1323">Director de ventas y/o comercialización</ion-option>                                   
+                <ion-option value="1321">Director financiero y/o administrativo</ion-option>                                   
+                <ion-option value="1211">Director o Gerente general</ion-option>                                   
+                <ion-option value="1212">Director regional, sucursal, oficina</ion-option>                                   
+                <ion-option value="9254">Diseñador y Publicista</ion-option>                                   
+                <ion-option value="4132">Encargados de servicios de apoyo a la producción</ion-option>                                   
+                <ion-option value="4131">Encargados del control de abastecimiento e inventario</ion-option>                                   
+                <ion-option value="3131">Fotógrafos y operadores de equipos de grabación de imagen y sonido</ion-option>                                   
+                <ion-option value="5113">Guía</ion-option>                                   
+                <ion-option value="9222">Lavanderos y planchadores</ion-option>                                   
+                <ion-option value="9255">Medicos y afines</ion-option>                                   
+                <ion-option value="9131">Mensajeros, porteadores y repartidores</ion-option>                                   
+                <ion-option value="5122">Mesero-Barman </ion-option>                                   
+                <ion-option value="9132">Porteros, conserjes y afines</ion-option>                                   
+                <ion-option value="4222">Recepcionista, empleado de información y servicio al cliente</ion-option>                                   
+                <ion-option value="3414">Representante comercial- técnico de ventas</ion-option>                                   
+                <ion-option value="9256">Revisor Fiscal</ion-option>                                   
+                <ion-option value="4113">Secretaria(o)</ion-option>                                   
+                <ion-option value="1426">Supervisor de operaciones</ion-option>                                   
+                <ion-option value="1428">Supervisor de operaciones de limpieza y servicios similares</ion-option>                                   
+                <ion-option value="3122">Técnico en programación informática</ion-option>                                                           
+                <ion-option value="9133">Vigilantes y celadores</ion-option>                                   
+                <ion-option value="40">Otro</ion-option>                                   
+            </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label class="titulo" stacked>Numero de vacantes</ion-label>
+              <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.otravacantes[i].amount_vacancies"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label class="titulo" stacked>Razon principal de la vacante</ion-label>
+              <ion-input type="text" placeholder="" class="requiredInput" [(ngModel)]="empleo.otravacantes[i].reason"></ion-input>
+          </ion-item>
+
+          
+    </div>
+
+    <button ion-button color="Success" (click)="otrovacante()" *ngIf="empleo.generatevacancies == 'si'">Agregar Vacante</button>
+
+  
+    
+</div>
+
+<div class="capacitaciones" *ngIf="empleo.generatevacancies == 'si' || empleo.otravacantes.length >= 1">
     <ion-item>
-      <ion-label class="titulo" stacked>¿En el mes de Junio el establecimiento generará vacantes?</ion-label>
-      <ion-select class="requiredSelect">
-        <ion-option value="0">Si</ion-option>
-        <ion-option value="1">No</ion-option>
-      </ion-select>
+        <div item-content>
+            <ion-label class="titulo">Vacantes</ion-label>
+            <br>
+            <p>El objetivo de conocer las vacantes que se generan en el mes es establecer el aporte del sector turismo a la generación de empleo.</p>
+            <br>
+        </div>
     </ion-item>
+</div>
+
+
+
+  <!-- EMPLEO -->
+  <!-- 
+      
+    
+    
+
+   
+
+    
+
+    
 
     <ion-item>
 

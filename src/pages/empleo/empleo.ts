@@ -3,8 +3,12 @@ import { AppValidations } from '../../app/app.validations';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AppSaveForm } from '../../services/app.save.form.service';
 import { EmpleoModel } from '../../model/empleo/empleo.model';
+import { EmpleadosModel } from '../../model/empleo/empleados.model';
+import {VacantesModel } from '../../model/empleo/vacantes.model'
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { StorageService } from "../../core/services/storage.service";
+import { from } from "rxjs/observable/from";
+
 
 
 /**
@@ -22,6 +26,9 @@ export class EmpleoPage {
   public mainNameApp: string;
   private appConfig:AppConfigurations;
   public empleo : EmpleoModel=new EmpleoModel();
+  public templeados : EmpleadosModel=new EmpleadosModel();
+  public vacantes: VacantesModel=new VacantesModel();
+
   @ViewChild("container") container: ElementRef;
  
 
@@ -39,6 +46,8 @@ export class EmpleoPage {
     
     ) {
     this.empleo.dateStart = this.dateTime();
+    this.empleo.otro_empleo=[];
+    this.empleo.otravacantes=[];
     this.empleo.A0 = this.storageService.user.data.user.fullname;
     this.appConfig=new AppConfigurations();
     this.mainNameApp=this.appConfig.mainNameApp;
@@ -49,6 +58,36 @@ export class EmpleoPage {
     
     console.log('ionViewDidLoad EmpleoPage');
   }
+
+  public empleados(){
+    this.empleo.employees=[];
+    for(let i=0;i<this.empleo.amount_employees;i++)
+    {
+      let ele=new EmpleadosModel();
+      this.empleo.employees.push(ele);
+    }
+
+  }
+
+  public otroempleados(){
+      
+      let ele=new EmpleadosModel();
+      this.empleo.otro_empleo.push(ele);
+
+  }
+
+  public vacante(){
+    this.empleo.vacantes=[];
+      if(this.empleo.generatevacancies == "si"){
+        let ele=new VacantesModel();
+        this.empleo.vacantes.push(ele);
+      }
+  }
+  public otrovacante(){
+    let ele=new VacantesModel();
+    this.empleo.otravacantes.push(ele);
+
+}
   private dateTime(): string {
     const dateTime = new Date();
     return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();

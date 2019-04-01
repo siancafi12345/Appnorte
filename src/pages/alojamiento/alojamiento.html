@@ -111,7 +111,7 @@
         </ion-item>
         <ion-item>
             <ion-label floating>Dirección </ion-label>
-            <ion-input [(ngModel)]="alojamiento.address"></ion-input>
+            <ion-input [(ngModel)]="alojamiento.address" class="requiredInput" ></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Nombre del contacto </ion-label>
@@ -183,8 +183,9 @@
         </ion-item>
         <ion-item >
             <ion-label class="titulo" stacked>E-mail</ion-label>
-            <ion-input [(ngModel)]="alojamiento.email" class="requiredInput" type="email" max="5" placeholder=""></ion-input>
-        </ion-item>
+            <ion-input [(ngModel)]="alojamiento.email" class="requiredInput" type="email"  placeholder="" ngModel email="true"></ion-input>
+        </ion-item> 
+        
     
     
         <ion-label class="titulo"> Parte B. ACTIVIDAD DEL SERVICIO DE LA alojamiento DE VIAJES Y TURISMO </ion-label> 
