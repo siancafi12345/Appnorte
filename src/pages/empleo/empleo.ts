@@ -75,6 +75,57 @@ export class EmpleoPage {
       this.empleo.otro_empleo.push(ele);
 
   }
+  public anterior(num){
+    switch (num) {
+      case 1:
+        this.empleo.sigiente_1 = true;
+      break;
+      case 2:
+        this.empleo.sigiente_2 = true;
+      break;
+      case 3:
+          this.empleo.sigiente_3 = true;
+        break;
+    }
+  }
+
+  public sigiente1(num){
+     if(this.validations.validate(this.container))
+     {
+      switch (num) {
+        case 1:
+          this.empleo.sigiente_1 = false;
+          break;
+        case 2:
+          this.empleo.sigiente_2 = false;
+          break;
+        case 3:
+          this.empleo.sigiente_3 = false;
+          break;
+        case 4:
+          this.empleo.sigiente_4 = false;
+          break;
+        
+      }
+      
+     }
+     else
+     {
+       let alert = this.alertCtrl.create({
+         title: 'Alerta!!!',
+         message: 'Por favor llenar campos en rojo',
+         buttons: [          
+           {
+             text: 'OK',
+             handler: () => {
+               console.log('Buy clicked');
+             }
+           }
+         ]
+       });
+       alert.present();
+     }
+  }
 
   public vacante(){
     this.empleo.vacantes=[];

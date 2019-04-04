@@ -23,13 +23,9 @@ export class AgenciasdeviajesPage {
   public dateStart:string= "" ;
   public mainNameApp: string;
   public myDate: string;
-  private dateTime():string  {
+  private dateTime(): string {
     const dateTime = new Date();
-    var a = dateTime.toString();
-    var res = a.slice(15, 25);
-    console.log(res);
-    return res
-    
+    return dateTime.toLocaleDateString() + ' ' + dateTime.toLocaleTimeString();
   }
 
   
@@ -60,6 +56,7 @@ export class AgenciasdeviajesPage {
     this.agencia.datesurvey_start = moment(now.format(), moment.ISO_8601).format();
     }
    
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgenciasdeviajesPage');

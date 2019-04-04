@@ -183,11 +183,11 @@
             
             <ion-item >
                 <ion-label class="titulo" stacked>Ext.</ion-label>
-                <ion-input  formControlName="phone_ext"  class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input  formControlName="phone_ext"   type="number" max="5" placeholder=""></ion-input>
             </ion-item>
             <ion-item >
                 <ion-label class="titulo" stacked>Celular</ion-label>
-                <ion-input formControlName="cell_phone" class="requiredInput" type="number" max="5" placeholder="" (keyup)="celular(10)"></ion-input>
+                <ion-input formControlName="cell_phone"  type="number" max="5" placeholder="" (keyup)="celular(10)"></ion-input>
             </ion-item>
             <ion-label *ngIf="telefonovalida1"  class="titulo1"> El numero debe contener 10 caracteres</ion-label>
             <ion-item >
