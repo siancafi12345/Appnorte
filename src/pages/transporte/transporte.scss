@@ -20,5 +20,8 @@ page-transporte {
    .top {
     margin-top: 7%;
 }
+ion-input.ng-dirty.ng-invalid {
+    background-color: red
+  }
 
 }
