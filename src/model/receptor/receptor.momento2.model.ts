@@ -81,6 +81,8 @@ export class ReceptorMomento2Model {
     public aceptinfo2:string='';
     public facebook:string='';
     public twitter:string='';
+    
+
 
     
 

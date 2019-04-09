@@ -161,6 +161,7 @@ linpiar(){
     this.momento1.sumTotal=parseInt(this.momento1.ps2)+parseInt(this.momento1.ps1)+parseInt(this.momento1.ps3)+parseInt(this.momento1.ps4)+parseInt(this.momento1.ps5);
 
     localStorage.total = this.momento1.sumTotal;
+    localStorage.setItem('total2', JSON.stringify(this.momento1.sumTotal));
     if(parseInt(this.momento1.ps3)>0)
     {
       this.flagWhoIsGoingToBirth=true;
@@ -375,6 +376,13 @@ public celular(val){
 
   public validatefrequency_id()
   {
+    if(this.momento1.frequency_id=='107'){
+      localStorage.cuantos_viajes = "1";
+      
+    }else{
+      localStorage.cuantos_viajes = "2";
+
+    }
     if(this.momento1.frequency_id=='107' || this.momento1.frequency_id=='106')
     {
       this.flagMomento2=true;

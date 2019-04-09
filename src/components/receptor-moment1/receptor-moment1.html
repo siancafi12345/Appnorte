@@ -237,16 +237,14 @@
       <ion-label class="titulo" stacked> ¿Cuál fue el motivo profesional para venir a Norte de Santander?</ion-label>
       <ion-select [(ngModel)]="momento1.trip_motives" (ionChange)="showtrip_motives($event)" name="trip_motives" placeholder="MOTIVOS" multiple="false" class="requiredSelect">
       <ion-label> Seleccione </ion-label>
-      <ion-option value="89">Realizar inversión y/o asistir a reunión de negocios</ion-option>
-      <ion-option value="90">Asistir a conferencia, congreso, feria comercial o exposición</ion-option>
       <ion-option value="91"> Dictar conferencia, ponente en congreso, feria comercial o exposición</ion-option>
       <ion-option value="92">Artista de espectáculo (concierto, obra de teatro, danza, etc.)</ion-option>
+      <ion-option value="90">Asistir a conferencia, congreso, feria comercial o exposición</ion-option>
       <ion-option value="93">Competir en actividad deportiva</ion-option>
-      <ion-option value="94">Investigación académica o científica</ion-option>
       <ion-option value="95">Comprar bienes o servicios para empresa que no es de {{mainNameApp}} o como independiente</ion-option>
+      <ion-option value="89">Realizar inversión y/o asistir a reunión de negocios</ion-option>
       <ion-option value="96">Vender bienes o prestar servicios como representante de empresa que no es de {{mainNameApp}} o como independiente</ion-option>
       <ion-option value="97">Vine a ser empleado(a) de una empresa ubicada en Norte de Santander</ion-option>
-      <ion-option value="793">Realizar funciones propias de personal de embajada, consulado y militares en el departamento.</ion-option>
       <ion-option value="9269">Vivir en Norte de Santander.</ion-option>
       <ion-option value="40">Otros</ion-option>
     </ion-select>
@@ -317,6 +315,6 @@
   <div text-center>
     <button *ngIf="guardar" (click)="save()" ion-button color="primary">Guardar</button>
     <button *ngIf="flagMomento2" (click)="next()" ion-button color="primary">Siguiente</button>
-    <!-- <button  (click)="next()" ion-button color="primary">Siguiente</button> -->
+    <!-- <button  (click)="next()" ion-button color="primary">Siguiente</button>  -->
   </div>
 </div>

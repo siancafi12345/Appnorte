@@ -9,10 +9,15 @@
       <ion-label class="titulo" stacked>¿Cuántas noches pasó en {{mainNameApp}}?</ion-label>
       <ion-input id="diferencial" type="number"   name="how_many_nights" [(ngModel)]="momento2.how_many_nights" disabled  ></ion-input>
     </ion-item>
+    
+
+   
     <ion-item>
       <ion-label class="titulo" stacked>¿Cuántos municipios visitó desde el momento que llegó a {{mainNameApp}} hasta su partida?</ion-label>
       <ion-input type="number" (ionBlur)="createTrips()" placeholder="" name="how_many_cities" max="125" [(ngModel)]="momento2.how_many_cities" class="requiredInput"></ion-input>
     </ion-item>
+    
+
     <div *ngFor="let B3 of momento2.lB3; let i = index;">
     <ion-item>
     <ion-label class="titulo" stacked>Municipio No. {{i+1}}</ion-label>
@@ -21,6 +26,7 @@
        <ion-option *ngFor="let city of B3_1Json['cities']; let x = index;" value="{{city.id}}">{{city.name}}</ion-option>
       </ion-select>
     </ion-item>
+    
     <ion-item>
       <ion-label class="titulo" stacked>¿Cuántas noches pasó?</ion-label>
       <ion-input type="number" (ionBlur)="sumadias(i)" placeholder="" name="how_many_city" [(ngModel)]="B3.how_many_city" class="requiredInput"></ion-input>
@@ -202,23 +208,23 @@
       <ion-label class="titulo" stacked>¿Qué actividades realizó en {{mainNameApp}}?</ion-label>
       <ion-select  class="requiredSelect" (ionChange)="validatenorteSantanderquest()" [(ngModel)]="momento2.norteSantanderquest" placeholder="Seleccionar" name="norteSantanderquest" multiple="true">
         <ion-label> Seleccione </ion-label>
-        <ion-option value="157">Actividades religiosas (Procesión, misa, asistencia a representaciones de semana santa)</ion-option>
-        <ion-option value="153">Asistencia a competencias o muestras deportivas.</ion-option>
-        <ion-option value="134">Asistencia a espectáculos artísticos que no hacen parte de festivales.</ion-option>
-        <ion-option value="135">Asistencia a festivales artísticos (Música, cine, danzas)</ion-option>
-        <ion-option value="136">Asistencia a fiestas y ferias de los pueblos o municipios</ion-option>
-        <ion-option value="159">Asistir a conferencias/Congresos/ferias comerciales</ion-option>
-        <ion-option value="158">Realizar inversiones/Reuniones de negocios</ion-option>
-        <ion-option value="156">Compras en almacenes no ubicados en centros comerciales</ion-option>
-        <ion-option value="155">Visita a centros comerciales</ion-option>
-        <ion-option value="154">Visita a discotecas, bares, karaoke y pistas de baile</ion-option>
-        <ion-option value="152">Práctica de deportes</ion-option>
-        <ion-option value="151">Visita a casinos y otros sitios de juegos de azar</ion-option>
-        <ion-option value="150">Visita a haciendas o fábricas donde enseñan el proceso del café, la panela, los dulces etc.</ion-option>
-        <ion-option value="149">Recorrer las calles y parques del casco urbano</ion-option>
-        <ion-option value="148">Visita a parques naturales, Cascadas, ríos, pozos, balnearios, zoológicos y jardines botánicos</ion-option>
-        <ion-option value="137">Visita a museos, casas de la cultura, iglesias, santuarios, monumentos</ion-option>
-        <ion-option value="40">Otro</ion-option>
+          <ion-option value="157">Actividades religiosas (Procesión, misa, asistencia a representaciones de semana santa)</ion-option>                                            
+          <ion-option value="153">Asistencia a competencias o muestras deportivas.</ion-option>                                             
+          <ion-option value="134">Asistencia a espectáculos artísticos que no hacen parte de festivales.</ion-option>                                             
+          <ion-option value="135">Asistencia a festivales artísticos (Música, cine, danzas)</ion-option>                                             
+          <ion-option value="136">Asistencia a fiestas y ferias de los pueblos o municipios</ion-option>                                             
+          <ion-option value="159">Asistir a conferencias/Congresos/ferias comerciales</ion-option>                                             
+          <ion-option value="156">Compras en almacenes no ubicados en centros comerciales</ion-option>                                             
+          <ion-option value="835">Ninguna</ion-option>                                             
+          <ion-option value="152">Práctica de deportes</ion-option>                                             
+          <ion-option value="158">Realizar inversiones/Reuniones de negocios</ion-option>                                             
+          <ion-option value="149">Recorrer las calles y parques del casco urbano</ion-option>                                             
+          <ion-option value="151">Visita a casinos y otros sitios de juegos de azar</ion-option>                                             
+          <ion-option value="155">Visita a centros comerciales</ion-option>                                             
+          <ion-option value="154">Visita a discotecas, bares, karaoke y pistas de baile</ion-option>                                             
+          <ion-option value="137">Visita a museos, casas de la cultura, iglesias, santuarios, monumentos</ion-option>                                             
+          <ion-option value="148">Visita a parques naturales, Cascadas, ríos, pozos, balnearios, zoológicos y jardines botánicos</ion-option>                                             
+          <ion-option value="40">Otro</ion-option>                                                                                          
       </ion-select>
     </ion-item>
     <ion-item *ngIf="flagB5_otro">
@@ -529,6 +535,15 @@
           <ion-label class="titulo" stacked>¿A cuántas personas cubrió?</ion-label>
           <ion-input type="number" placeholder="" name="people_covered" [(ngModel)]="momento2.people_covered" class="requiredInput"></ion-input>
         </ion-item>
+
+        
+
+        <ion-item *ngIf="this.momento2.people_covered > local">
+          
+          <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{local}} </ion-label>
+        </ion-item> 
+
+
         <ion-item>
           <ion-label class="titulo" stacked>El paquete/plan turístico o excursión fue comprado a:</ion-label>
           <ion-select  (ionChange)="showE3_1()" [(ngModel)]="momento2.packagebuy_id" placeholder="Seleccionar" name="momento2.packagebuy_id" class="requiredSelect">
@@ -615,6 +630,12 @@
             <ion-label class="titulo" stacked>¿A cuántas personas cubrió? [Si solo a usted, ingrese 1]</ion-label>
             <ion-input type="number" placeholder="" name="E5_2" [(ngModel)]="E5.E5_2" class="requiredInput"></ion-input>
           </ion-item>
+
+          <ion-item *ngIf="this.E5.E5_2 > local">
+              
+              <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{local}} </ion-label>
+            </ion-item> 
+          
 
           <ion-item *ngIf="E5.E5_name=='Transporte terrestre de pasajeros desde una ciudad de Colombia a Norte de Santander (Incluye ida- vuelta)'">
             <ion-label class="titulo" stacked>¿Cuál es el nombre de la empresa de transporte terrestre de pasajeros utilizado desde una ciudad de Colombia a Norte de Santander?:</ion-label>
@@ -708,37 +729,48 @@
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿Cuánto gastó?</ion-label>
-      <ion-input type="number" placeholder="" name="transportExteOut" [(ngModel)]="momento2.transportExteOut" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="transportExteOut" [(ngModel)]="momento2.transportExteOut" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿A cuántas personas cubrió ese gasto? </ion-label>
-      <ion-input type="number" placeholder="" name="transportExteOutCovered" [(ngModel)]="momento2.transportExteOutCovered" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="transportExteOutCovered" [(ngModel)]="momento2.transportExteOutCovered" ></ion-input>
     </ion-item>
-
+    <ion-item *ngIf="this.momento2.transportExteOutCovered > local">
+          
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{local}} </ion-label>
+      </ion-item> 
     <ion-item>
         <ion-label class="titulo" stacked>GASTO TRANSPORTE DE LLEGADA :transporte terrestre desde una ciudad fuera del país a un municipio de NS Valor económico (cifra).</ion-label>
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿Cuánto gastó?</ion-label>
-      <ion-input type="number" placeholder="" name="transportExteIn" [(ngModel)]="momento2.transportExteIn" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="transportExteIn" [(ngModel)]="momento2.transportExteIn" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿A cuántas personas cubrió ese gasto? </ion-label>
-      <ion-input type="number" placeholder="" name="transportExteInCovered" [(ngModel)]="momento2.transportExteInCovered" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="transportExteInCovered" [(ngModel)]="momento2.transportExteInCovered" ></ion-input>
     </ion-item>
 
-
+    <ion-item *ngIf="this.momento2.transportExteInCovered > local">
+          
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{local}} </ion-label>
+      </ion-item> 
+    
     <ion-item>
         <ion-label class="titulo" stacked>GASTO COMPRA DE BIENES No Duraderos Valor económico (cifra).</ion-label>
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿Cuánto gastó?</ion-label>
-      <ion-input type="number" placeholder="" name="purchaseGoods" [(ngModel)]="momento2.purchaseGoods" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="purchaseGoods" [(ngModel)]="momento2.purchaseGoods" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>¿A cuántas personas cubrió ese gasto? </ion-label>
-      <ion-input type="number" placeholder="" name="purchaseGoodsCovered" [(ngModel)]="momento2.purchaseGoodsCovered" class="requiredInput"></ion-input>
+      <ion-input type="number" placeholder="" name="purchaseGoodsCovered" [(ngModel)]="momento2.purchaseGoodsCovered" ></ion-input>
     </ion-item>
+    <ion-item *ngIf="this.momento2.purchaseGoodsCovered > local">
+          
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{local}} </ion-label>
+      </ion-item> 
     <ion-item>
         <ion-label class="titulo" stacked>GASTO EXTRA.</ion-label>
     </ion-item>
@@ -920,6 +952,11 @@
         <ion-option value="20">20</ion-option>
         <ion-option value="20">Mayor a 20</ion-option>
       </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="momento2.experience2 > tviaje">
+          
+        <ion-label class="titulo" style="color: #31708f;background-color: #d9edf7; border-color: #bce8f1;" >El numero no es debe ser mayor a {{tviaje}} </ion-label>
     </ion-item>
 
 <!-- parte g -->

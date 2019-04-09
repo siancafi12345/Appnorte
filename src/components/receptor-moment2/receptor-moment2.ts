@@ -71,11 +71,12 @@ export class ReceptorMoment2Component {
   private alojamiento:boolean=false;
   private ciudadad_oter:boolean=false;
   private numerop:boolean=false;
-
+  local = "";
+  tviaje="";
   private tempCity:number;
   private diferncia:string = this.momento1.diferencia;
   public lB3:ReceptorB3Model[]=[];
-
+ 
   
   public E5Json=
   {
@@ -105,6 +106,7 @@ export class ReceptorMoment2Component {
   constructor(private alertCtrl: AlertController, private  _service:AppService, private validations:AppValidations, private _eventEmitter:EventEmiterService) {
     this.appConfig=new AppConfigurations();
     this.mainNameApp=this.appConfig.mainNameApp;
+    
     this.momento2.dateEnd=this.dateTime();
     this._service.getService('cities.json').subscribe(
       (response) => {  
@@ -356,7 +358,7 @@ public ciudad_r(){
   
 }
   private dateTime(): string {
-    console.log(localStorage," prueba");
+    
     const dateTime = new Date();
     return dateTime.toLocaleTimeString();
   }
@@ -383,6 +385,9 @@ public ciudad_r(){
   public createTrips()
   {
     
+    this.local = localStorage.total;
+    this.tviaje = localStorage.cuantos_viajes;
+
     this.momento2.how_many_nights = localStorage.diferencia;
     
     this.momento2.lB3=[];
@@ -682,7 +687,11 @@ public tipo_alojamiento(a, B3:ReceptorB3Model){
 
   public createE5()
   {
-    // console.log(this.momento2.outsidepackage_id);
+    console.log(this.momento2.outsidepackage_id);
+
+    if(this.momento2.outsidepackage_id.indexOf("640")>=0){
+      this.momento2.outsidepackage_id = ["640"];
+    }
     if(this.momento2.outsidepackage_id.indexOf("99")>=0)
     {
       this.momento2.lE5=[];
@@ -719,12 +728,15 @@ public tipo_alojamiento(a, B3:ReceptorB3Model){
     }
     this.momento2.lE5=[];
     let num = this.momento2.outsidepackage_id.length;
-    for(let i=0;i<num;i++)
-    {
-      let ele=new ReceptorE5Model();
-      ele.E5_name=this.E5Json['data'].find(x => x.id == this.momento2.outsidepackage_id[i]).name;
-      this.momento2.lE5.push(ele);
-    }
+    if(this.momento2.outsidepackage_id.indexOf("640")>=0){
+      
+    }else{
+      for(let i=0;i<num;i++){
+        let ele=new ReceptorE5Model();
+        ele.E5_name=this.E5Json['data'].find(x => x.id == this.momento2.outsidepackage_id[i]).name;
+        this.momento2.lE5.push(ele);
+      }
+    } 
   }
 
   public showE6_otro()
