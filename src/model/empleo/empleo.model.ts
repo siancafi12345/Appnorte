@@ -3,7 +3,6 @@ import {VacantesModel} from "../empleo/vacantes.model";
 
 
 export class EmpleoModel {
-   
   public dateStart:string='';
   public A0:string='';
   public employer_name:string='';
@@ -23,30 +22,6 @@ export class EmpleoModel {
   public require_workshop:string="";
   public workshop_subjects:string="";
   public workshop_other:string="";
-
-
-  
-
-  
- 
-
-
-
-
-
-
-  
-
-
-
-  
-
-  
-
-
-  
-
-
-
-  }
+  public email:string="";
+}
   

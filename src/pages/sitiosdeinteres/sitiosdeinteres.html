@@ -206,12 +206,12 @@
             </ion-select>
         </ion-item>
         <ion-item *ngIf="actividad">
-            <ion-label floating>Que Cargo </ion-label>
+            <ion-label floating>Cual </ion-label>
             <ion-input formControlName="other_sport_activities" ></ion-input>
         </ion-item> 
         <ion-item >
             <ion-label class="titulo" stacked>Fuera de las actividades deportivas, ¿Qué otras actividades recreativas y culturales ofrece la empresa?</ion-label>
-            <ion-input formControlName="various_activities" class="requiredInput"  placeholder="" ></ion-input>
+            <ion-input formControlName="various_activities"   placeholder="" ></ion-input>
         </ion-item>
 
         <ion-list radio-group formControlName="comercial_activity" (ionChange)="comercial()">

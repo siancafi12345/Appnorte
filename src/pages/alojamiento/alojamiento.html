@@ -235,7 +235,7 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>Total habitaciones:</ion-label>
-                <ion-input  class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input  class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.htotal_rooms"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                     (Por favor no incluir las habitaciones para el  personal de la empresa.)
@@ -243,7 +243,7 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál es la capacidad máxima de alojamiento en personas?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.hcapacity_people_max"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente.)
@@ -251,7 +251,7 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál fue la tarifa de una habitación doble estándar incluido impuestos ($) en el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.hroom_rate"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (encuestador ingrese cifra completa, sin puntos, ni comas)
@@ -259,22 +259,22 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas personas realizaron Check in o ingresaron durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.hpeople_check"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera de Norte Santander?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.htravelers_entered"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas habitaciones se ocuparon durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.hrooms_occupied"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Total huéspedes durante noches del mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.htotal_guests"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)
@@ -282,11 +282,12 @@
      
         </ion-list>
 
-        <ion-list *ngIf="alojamiento.apartamento">
+
+       <ion-list *ngIf="alojamiento.apartamento">
             <ion-label class="titulo"> Apartamentos </ion-label> 
             <ion-item >
                 <ion-label class="titulo" stacked>Total apartamentos:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.atotal_rooms"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no incluir apartamentos para el personal de la empresa.)
@@ -294,7 +295,7 @@
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál es la capacidad máxima de alojamiento en personas?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.acapacity_people_max"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente.)
@@ -302,7 +303,7 @@
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál fue la tarifa de un apartamento de acomodacion doble incluido impuestos ($) en el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.aroom_rate"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (encuestador ingrese cifra completa, sin puntos, ni comas)     
@@ -310,22 +311,22 @@
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas personas realizaron Check in o ingresaron durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.apeople_check"></ion-input>
             </ion-item>
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera de Norte Santander?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.atravelers_entered"></ion-input>
             </ion-item>
     
             <ion-item >
                 <ion-label class="titulo" stacked>Cuántos apartamentos se ocuparon durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.arooms_occupied"></ion-input>
             </ion-item>
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Total huéspedes durante noches del mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.atotal_guests"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                     (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)
@@ -338,7 +339,7 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>Total casas:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.castotal_rooms"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no incluir las casas para el personal de la empresa.)
@@ -346,7 +347,7 @@
         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál es la capacidad máxima de alojamiento en personas?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cascapacity_people_max"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente.)
@@ -354,13 +355,13 @@
         
             <ion-item >
                 <ion-label class="titulo" stacked>Número promedio de personas por casa:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.casaverage_people"></ion-input>
             </ion-item>
              
         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál fue la tarifa de una casa incluido impuestos ($) en el mes de anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.casroom_rate"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (encuestador ingrese cifra completa, sin puntos, ni comas)
@@ -368,34 +369,34 @@
         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas personas realizaron Check in o ingresaron durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.caspeople_check"></ion-input>
             </ion-item>
         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera de Norte Santander?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.castravelers_entered"></ion-input>
             </ion-item>
         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas casas se ocuparon durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.casrooms_occupied"></ion-input>
             </ion-item>
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Total huéspedes durante noches del mes anterio?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.castotal_guests"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)
             </ion-label>
         </ion-list>
-
+ 
         <ion-list *ngIf="alojamiento.cabanas">
             <ion-label class="titulo"> Cabañas </ion-label> 
 
             <ion-item >
                 <ion-label class="titulo" stacked>Total cabañas:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabtotal_rooms"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no incluir lsa casas para el personal de la empresa.)
@@ -403,7 +404,7 @@
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál es la capacidad máxima de alojamiento en personas?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabcapacity_people_max"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Por favor no cuente las personas que pueden hospedarse en camas creadas a petición del cliente.)
@@ -411,13 +412,13 @@
             
             <ion-item >
                 <ion-label class="titulo" stacked>Número promedio de personas por cabaña:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabaverage_people"></ion-input>
             </ion-item>
                  
             
             <ion-item >
-                <ion-label class="titulo" stacked>¿Cuál fue la tarifa de una casa incluido impuestos ($) en el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-label class="titulo" stacked>¿Cuál fue la tarifa de una Cabañas incluido impuestos ($) en el mes anterior?</ion-label>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabroom_rate"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (encuestador ingrese cifra completa, sin puntos, ni comas)
@@ -425,22 +426,22 @@
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas personas realizaron Check in o ingresaron durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabpeople_check"></ion-input>
             </ion-item>
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera de Norte Santander?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabtravelers_entered"></ion-input>
             </ion-item>
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas cabañas se ocuparon durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabrooms_occupied"></ion-input>
             </ion-item>
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Total huéspedes durante noches del mes  anterio?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.cabtotal_guests"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)
@@ -452,48 +453,48 @@
 
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuál es el área del terreno para camping (m2)?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camground_area"></ion-input>
             </ion-item>
                         
             <ion-item >
                 <ion-label class="titulo" stacked>Total parcelas (N° de espacios para carpas):</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camtotal_plots"></ion-input>
             </ion-item>
                  
             
             <ion-item >
                 <ion-label class="titulo" stacked>Capacidad para camping en número de personas:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camcapacity_people_max"></ion-input>
             </ion-item>
                         
             <ion-item >
                 <ion-label class="titulo" stacked>Tarifa por persona día ($) en el mes anterior:</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camroom_rate"></ion-input>
             </ion-item>
                         
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas personas ingresaron durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.campeople_check"></ion-input>
             </ion-item>
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántos viajeros que ingresaron durante el mes anterior tienen residencia fuera de Norte Santander?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camtravelers_entered"></ion-input>
             </ion-item>
             
             <ion-item >
                 <ion-label class="titulo" stacked>¿Cuántas parcelas (N° de espacios para carpas) se ocuparon durante el mes anterior?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camrooms_occupied"></ion-input>
             </ion-item>
     
             <ion-item >
                 <ion-label class="titulo" stacked>¿Total huéspedes durante noches del mes de Junio?</ion-label>
-                <ion-input class="requiredInput" type="number" max="5" placeholder=""></ion-input>
+                <ion-input class="requiredInput" type="number" max="5" placeholder="" [(ngModel)]="alojamiento.camtotal_guests"></ion-input>
             </ion-item>
             <ion-label class="titulo1" > 
                 (Es la sumatoria de los huéspedes que se encontraban registrados cada noche del mes)
             </ion-label>
-        </ion-list>
+        </ion-list> 
     
     
       </ion-list>

@@ -74,12 +74,14 @@ export class AlimentacionPage {
       food_dishes_all: [''],
       dish_cost: [''],
       percentage_customers: [''],
-      mesas_disponibles: [''],
-
+      number_tables: [''],
+      food_dishes_prom:[''],
+      dish_cost_more:[''],
+      food_units_all:['']
 
     });
   }
-
+  
 
   ionViewDidLoad() {
     this.storageService.loadStorageForm('alimentacion')

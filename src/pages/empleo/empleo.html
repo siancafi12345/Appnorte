@@ -115,13 +115,14 @@
     <ion-label class="titulo" stacked>Celular:</ion-label>
     <ion-input type="number" placeholder="" class="requiredInput"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label class="titulo" stacked>Correo electrónico:</ion-label>
-    <ion-input type="text" placeholder="" class="requiredInput"></ion-input>
-  </ion-item> 
+  <ion-item >
+    <ion-label class="titulo" stacked>E-mail</ion-label>
+    <ion-input [(ngModel)]="empleo.email" class="requiredInput" type="email"  placeholder="" ngModel email="true"></ion-input>
+</ion-item> 
+  
 </div>
 <div text-center *ngIf="empleo.sigiente_1">
-  <button ion-button color="primary" (click)="sigiente1(1)">suguente -></button>
+  <button ion-button color="primary" (click)="sigiente1(1)">SIGUIENTE -></button>
 </div>
  <!-- Parte 2-->
 <div *ngIf="empleo.sigiente_1 == false && empleo.sigiente_2 == true">
@@ -231,7 +232,7 @@
         </ion-select>
     </ion-item>
     <ion-item *ngIf="empleo.employees[i].owner_partner_family == '40'">
-        <ion-label class="titulo" stacked>Otreo cual</ion-label>
+        <ion-label class="titulo" stacked>Otro cual</ion-label>
         <ion-input  placeholder=""  name="employees" [(ngModel)]="empleo.employees[i].oterowner_partner_family"></ion-input>
     </ion-item> 
     <ion-item>
@@ -368,7 +369,7 @@
         </ion-select>
     </ion-item>
     <ion-item *ngIf="empleo.otro_empleo[i].owner_partner_family == '40'">
-        <ion-label class="titulo" stacked>Otreo cual</ion-label>
+        <ion-label class="titulo" stacked>Otro cual</ion-label>
         <ion-input  placeholder=""  name="otro_empleo" [(ngModel)]="empleo.otro_empleo[i].oterowner_partner_family"></ion-input>
     </ion-item> 
     <ion-item>
@@ -400,7 +401,7 @@
   
   <div text-center *ngIf="empleo.sigiente_2">
     <button ion-button color="primary" (click)="anterior(1)"> <- Paso anterior </button>
-    <button ion-button color="primary" (click)="sigiente1(2)">suguente -></button>
+    <button ion-button color="primary" (click)="sigiente1(2)">SIGUIENTE -></button>
   </div>
 </div>
   <!-- parte 3 -->
@@ -559,7 +560,7 @@
     </div>
     <div text-center>
       <button ion-button color="primary" (click)="anterior(2)"> <- Paso anterior </button>
-      <button ion-button color="primary" (click)="sigiente1(3)">suguente -></button>
+      <button ion-button color="primary" (click)="sigiente1(3)">SIGUIENTE -></button>
     </div>
   
 </div>
@@ -599,7 +600,7 @@
     </div>
     <div text-center>
       <button ion-button color="primary" (click)="anterior(3)"> <- Paso anterior </button>
-      <button ion-button color="primary" (click)="sigiente1(4)">suguente -></button>
+      <button ion-button color="primary" (click)="sigiente1(4)">SIGUIENTE -></button>
     </div>
   </div>
 

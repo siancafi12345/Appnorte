@@ -245,7 +245,7 @@
             <div *ngIf="alimentacion.value.comercial_activity == 'si'">
                 <ion-item *ngIf="alimentacion.value.food_service !== ''">
                    <ion-label floating> Número de mesas disponibles: </ion-label>
-                   <ion-input type="number" formControlName="mesas_disponibles"></ion-input>
+                   <ion-input type="number" formControlName="number_tables"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service !== ''">
                    <ion-label floating> Número de asientos disponibles: </ion-label>
@@ -253,14 +253,14 @@
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '31'">
                      <ion-label floating> ¿Cuántos platos de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior? </ion-label>
-                    <ion-input formControlName="food_units_prom" type="text"></ion-input>
+                    <ion-input formControlName="food_dishes_prom" type="text"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '32'">
                      <ion-label floating> ¿Cuántas unidades de comida máximo se hubieran podido servir en promedio diariamente con el personal con el que contó en el mes anterior </ion-label>
                     <ion-input formControlName="food_units_prom" type="text"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '31'">
-                    <ion-label floating> ¿Cuántas unidades de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                    <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
                     <ion-input formControlName="food_dishes_all" type="text"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '31'">
@@ -268,12 +268,12 @@
                     <ion-input formControlName="dish_cost" type="text"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '32'">
-                    <ion-label floating> ¿Cuántos platos de comida se sirvieron efectivamente en el mes anterior </ion-label>
-                    <ion-input formControlName="food_dishes_all" type="text"></ion-input>
+                    <ion-label floating> ¿Cuántas unidades  de comida se sirvieron efectivamente en el mes anterior </ion-label>
+                    <ion-input formControlName="food_units_all" type="text"></ion-input>
                 </ion-item>
                 <ion-item *ngIf="alimentacion.value.food_service == '32'">
-                    <ion-label floating> ¿Cuánto vale el plato de comida que más se vendió en el mes anterior? </ion-label>
-                    <ion-input formControlName="dish_cost" type="text"></ion-input>
+                    <ion-label floating> ¿Cuánto vale la unidades de comida que más se vendió en el mes anterior? </ion-label>
+                    <ion-input formControlName="dish_cost_more" type="text"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label class="titulo"> Parte D. Atención a visitantes no residentes en {{mainNameApp}} </ion-label>
