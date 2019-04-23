@@ -88,8 +88,31 @@ export class EmpleoPage {
         break;
     }
   }
+  //paso de filtros
+   public sigiente11(num){
+    
+      switch (num) {
+        case 1:
+          this.empleo.sigiente_1 = false;
+          break;
+        case 2:
+          this.empleo.sigiente_2 = false;
+          break;
+        case 3:
+          
+          this.empleo.sigiente_3 = false;
+          break;
+        case 4:
+          this.empleo.sigiente_4 = false;
+          break;
+      }
+  }
+
+
+
 
   public sigiente1(num){
+   
      if(this.validations.validate(this.container))
      {
       switch (num) {
@@ -128,13 +151,14 @@ export class EmpleoPage {
   }
 
   public vacante(){
-    this.empleo.vacantes=[];
+    //this.empleo.vacantes=[];
       if(this.empleo.generatevacancies == "si"){
         let ele=new VacantesModel();
         this.empleo.vacantes.push(ele);
       }
   }
   public otrovacante(){
+    
     let ele=new VacantesModel();
     this.empleo.otravacantes.push(ele);
 
@@ -149,6 +173,7 @@ export class EmpleoPage {
   {
     if(this.validations.validate(this.container))
     {
+      
       var flag=this.saveForm.save(
         this.empleo,
         this.appConfig.form7.number,

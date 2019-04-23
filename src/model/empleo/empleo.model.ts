@@ -10,6 +10,11 @@ export class EmpleoModel {
   public position_id:string='';
   public other_position:string='';
   public contact_name:string='';
+  public phone:string='';
+  public phoneext:string='';
+  public cellphone:string='';
+
+
   public employees:EmpleadosModel[]=[];
   public otro_empleo:EmpleadosModel[]=[];
   public generatevacancies:string='';

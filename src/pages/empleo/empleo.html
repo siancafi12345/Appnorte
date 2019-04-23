@@ -105,15 +105,15 @@
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Teléfono fijo:</ion-label>
-    <ion-input type="number" placeholder="" class="requiredInput"></ion-input>
+    <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.phone"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Extensión:</ion-label>
-    <ion-input type="number" placeholder="" ></ion-input>
+    <ion-input type="number" placeholder="" [(ngModel)]="empleo.phoneext" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="titulo" stacked>Celular:</ion-label>
-    <ion-input type="number" placeholder="" class="requiredInput"></ion-input>
+    <ion-input type="number" placeholder="" class="requiredInput" [(ngModel)]="empleo.cellphone"></ion-input>
   </ion-item>
   <ion-item >
     <ion-label class="titulo" stacked>E-mail</ion-label>
@@ -124,6 +124,12 @@
 <div text-center *ngIf="empleo.sigiente_1">
   <button ion-button color="primary" (click)="sigiente1(1)">SIGUIENTE -></button>
 </div>
+
+  paso de filtros
+<button ion-button color="primary" (click)="sigiente11(2)">text 2</button> 
+
+
+
  <!-- Parte 2-->
 <div *ngIf="empleo.sigiente_1 == false && empleo.sigiente_2 == true">
   <!-- empleo -->
@@ -181,8 +187,8 @@
     <ion-item> 
       <ion-label class="titulo" stacked>Género</ion-label>
           <ion-select class="requiredSelect" [(ngModel)]="empleo.employees[i].sex_id">
-            <ion-option value="9412">Femenino</ion-option>
-            <ion-option value="9413">Masculino</ion-option>
+            <ion-option value="12">Femenino</ion-option>
+            <ion-option value="11">Masculino</ion-option>
           </ion-select>
     </ion-item>
     <ion-item>
@@ -269,7 +275,7 @@
     <ion-item>
       <ion-label class="titulo" stacked>Cargo</ion-label>
       <ion-select class="requiredSelect"   [(ngModel)]="empleo.otro_empleo[i].charge_id">
-        <ion-option value="">  </ion-option>                                   
+                                        
         <ion-option value="9253">Abogado</ion-option>                                   
         <ion-option value="3413">Agente de viajes</ion-option>                                   
         <ion-option value="7211">Albañiles, mamposteros y afines</ion-option>                                   
@@ -318,8 +324,8 @@
     <ion-item> 
       <ion-label class="titulo" stacked>Género</ion-label>
           <ion-select class="requiredSelect" [(ngModel)]="empleo.otro_empleo[i].sex_id">
-            <ion-option value="9412">Femenino</ion-option>
-            <ion-option value="9413">Masculino</ion-option>
+            <ion-option value="12">Femenino</ion-option>
+            <ion-option value="11">Masculino</ion-option>
           </ion-select>
     </ion-item>
     <ion-item>
@@ -404,7 +410,7 @@
     <button ion-button color="primary" (click)="sigiente1(2)">SIGUIENTE -></button>
   </div>
 </div>
-  <!-- parte 3 -->
+  <!-- parte 3 vacante-->
 <div *ngIf="empleo.sigiente_2 == false && empleo.sigiente_3 == true">
     <div *ngIf="empleo.employees.length >= 1 || empleo.amount_employees >= 0">
       <ion-item>
@@ -562,6 +568,11 @@
       <button ion-button color="primary" (click)="anterior(2)"> <- Paso anterior </button>
       <button ion-button color="primary" (click)="sigiente1(3)">SIGUIENTE -></button>
     </div>
+
+  paso de filtros
+  <button ion-button color="primary" (click)="sigiente11(3)">text 3</button> 
+
+
   
 </div>
   <!-- parte 4 -->
@@ -574,14 +585,14 @@
       </ion-item> 
       <ion-item>
           <ion-label class="titulo" stacked>¿En el mes anterior hay cargos que requieren capacitación?</ion-label>
-          <ion-select class="requiredSelect" [(ngModel)]="empleo.require_workshop" (ionChange)="vacante()">
+          <ion-select class="requiredSelect" [(ngModel)]="empleo.require_workshop" >
             <ion-option value="si">Si</ion-option>
             <ion-option value="no">No</ion-option>
           </ion-select>
       </ion-item>
       <ion-item *ngIf="empleo.require_workshop == 'si'">
         <ion-label class="titulo" stacked>¿En cuáles temas?</ion-label>
-        <ion-select class="requiredSelect" [(ngModel)]="empleo.workshop_subjects" (ionChange)="vacante()">
+        <ion-select class="requiredSelect" [(ngModel)]="empleo.workshop_subjects" >
           <ion-option value="827">Atención al cliente</ion-option>
           <ion-option value="828">Idioma</ion-option>
           <ion-option value="834">Información Turística y Tramites</ion-option>
