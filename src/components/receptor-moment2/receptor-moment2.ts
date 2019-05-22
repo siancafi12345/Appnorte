@@ -389,7 +389,6 @@ public ciudad_r(){
     this.tviaje = localStorage.cuantos_viajes;
 
     this.momento2.how_many_nights = localStorage.diferencia;
-    
     this.momento2.lB3=[];
     let num = parseInt(this.momento2.how_many_cities);
     for(let i=0;i<num;i++)
@@ -447,12 +446,33 @@ public tipo_alojamiento(a, B3:ReceptorB3Model){
   
   public setMain(B3:ReceptorB3Model)
   {
-    if(B3.B4Temp=='1')
+     if(B3.B4Temp=='1')
     {
       this.momento2.B4=B3;
       this.momento2.B4.name=this.B3_1Json['cities'].find(x => x.id == B3.city_id).name;
       
+    }else{
+      this.momento2.B4.name="";
     }
+    
+  }
+
+  destino_principal(i,  B3:ReceptorB3Model){
+  
+    let total = this.momento2.lB3.length;
+    let array = this.momento2.lB3;
+    let contador = 0;
+    array.forEach(function(element){
+     
+      if(element.B4Temp == "1" && i == contador){
+        element.B4Temp = "1";
+       
+      }else{ 
+       element.B4Temp = "2";
+      }
+      contador++
+    });
+    console.log(this.momento2.B4.name);
   }
 
   public validatenorteSantanderquest()

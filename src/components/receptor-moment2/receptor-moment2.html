@@ -47,11 +47,11 @@
         <ion-option value="130">Habitación sin pagar en vivienda de familia que no es allegada mía</ion-option>
         <ion-option value="121">Hostal/Albergue/Refugio</ion-option>
         <ion-option value="118">Hotel</ion-option>
-        <ion-option value="132">Ningún tipo de alojamiento</ion-option>
         <ion-option value="128">Casa/Apartamento propio</ion-option>
         <ion-option value="119">Posada</ion-option>
         <ion-option value="120">Posada turística</ion-option>
         <ion-option value="96">Otro</ion-option>
+        <ion-option value="132">Ningún tipo de alojamiento</ion-option>
       </ion-select>
     </ion-item>
     <ion-item *ngIf="B3.flagB3_1_2_otro">
@@ -60,7 +60,7 @@
     </ion-item>
     <ion-item>
       <ion-label class="titulo" stacked>Este fue el destino principal del viaje a {{mainNameApp}}?</ion-label>
-      <ion-select  class="requiredSelect" (ionChange)="setMain(B3)" [(ngModel)]="B3.B4Temp" placeholder="Seleccionar" name="B4">
+      <ion-select  class="requiredSelect" (ionBlur)="setMain(B3);destino_principal(i)" [(ngModel)]="B3.B4Temp" placeholder="Seleccionar" name="B4">
         <ion-label> Seleccione </ion-label>
         <ion-option [selected]="momento2.how_many_cities==1" value="1">Si</ion-option>
         <ion-option *ngIf="momento2.how_many_cities>1" value="2">No</ion-option>
@@ -215,7 +215,6 @@
           <ion-option value="136">Asistencia a fiestas y ferias de los pueblos o municipios</ion-option>                                             
           <ion-option value="159">Asistir a conferencias/Congresos/ferias comerciales</ion-option>                                             
           <ion-option value="156">Compras en almacenes no ubicados en centros comerciales</ion-option>                                             
-          <ion-option value="835">Ninguna</ion-option>                                             
           <ion-option value="152">Práctica de deportes</ion-option>                                             
           <ion-option value="158">Realizar inversiones/Reuniones de negocios</ion-option>                                             
           <ion-option value="149">Recorrer las calles y parques del casco urbano</ion-option>                                             
@@ -225,6 +224,7 @@
           <ion-option value="137">Visita a museos, casas de la cultura, iglesias, santuarios, monumentos</ion-option>                                             
           <ion-option value="148">Visita a parques naturales, Cascadas, ríos, pozos, balnearios, zoológicos y jardines botánicos</ion-option>                                             
           <ion-option value="40">Otro</ion-option>                                                                                          
+          <ion-option value="835">Ninguna</ion-option>                                             
       </ion-select>
     </ion-item>
     <ion-item *ngIf="flagB5_otro">
@@ -518,8 +518,8 @@
             <ion-option value="529">Cartagena</ion-option>
             <ion-option value="528">Bogotá</ion-option>
             <ion-option value="527">Barranquilla</ion-option>
-            <ion-option value="526">Ninguna</ion-option>
             <ion-option value="40">Otro</ion-option>
+            <ion-option value="526">Ninguna</ion-option>
           </ion-select>
         </ion-item>
         <ion-item *ngIf="flagE1_1_otro">
